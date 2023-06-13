@@ -10,18 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa45fd8649c012a4a8bcb67acbfd47a3, type: 3}
-  m_Name: Fireball
+  m_Name: Basic
   m_EditorClassIdentifier: 
-  name: fireball
-  proyectile: {fileID: 5911144701262280291, guid: 4a8a3d9cc8110b3449b3db5e95c532b8,
+  name: basic
+  proyectile: {fileID: 7954170096657420058, guid: 7cb1b61732ea27040b10e1b7ac2bcf0b,
     type: 3}
-  proyectileSpeed: 10
-  radius: 5
+  proyectileSpeed: 15
+  radius: 0
   knockback: 10
   heldSpellVFX: {fileID: 0}
   hitVFX: {fileID: 0}
   hitSFX: {fileID: 0}
-  targets: {fileID: 11500000, guid: 9b0725412e4246e6ac1c4a3a0bddfe07, type: 3}
+  targets: {fileID: 11500000, guid: db80dcdbb169c3e4d990838d60cae68f, type: 3}
   effects:
   - {fileID: 11500000, guid: 6af59fcbdf054d599aa232656f2c3d51, type: 3}
-  - {fileID: 11500000, guid: 840459e453b54c8ea5494daa6f8b1492, type: 3}
