@@ -31,7 +31,6 @@ public class GateHealth : MonoBehaviour, ITakeDamage, IReset
 
     public void TakeDamage(int damageAmount)
     {
-        
         currentLife -= damageAmount;
 
         if(currentLife <= 0)

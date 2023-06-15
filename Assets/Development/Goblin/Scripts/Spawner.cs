@@ -1,9 +1,10 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Spawner : MonoBehaviour
 {
     [SerializeField] float timeSpawn;
-    [SerializeField] Transform destination;
+    [SerializeField] Transform firstDestination;
     private void Start()
     {
         InvokeRepeating("SpawnEnemy", timeSpawn, timeSpawn);
@@ -16,7 +17,8 @@ public class Spawner : MonoBehaviour
         goblinObject.transform.position = this.transform.position;
         goblinObject.SetActive(true);
         goblinScript.ToggleState();
-        goblinScript.agent.SetDestination(destination.position); 
+        goblinScript.agent.SetDestination(firstDestination.position);
+        goblinScript.GoFinalDirection();
     }
 
 }
