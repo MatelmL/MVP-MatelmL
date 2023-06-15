@@ -123,104 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &199885466
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 199885470}
-  - component: {fileID: 199885469}
-  - component: {fileID: 199885468}
-  - component: {fileID: 199885467}
-  m_Layer: 0
-  m_Name: SpellRecognizer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &199885467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199885466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b2886b9db9f9f7469326493c343e73d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spells: []
-  SpellQueueSize: 4
---- !u!114 &199885468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199885466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a799052035281c24ab9f6fc4fbb040da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wandTip: {fileID: 1515136233}
-  heldSpellVFX: {fileID: 0}
---- !u!114 &199885469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199885466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7983b3fd032fac44cb7ef799e3bc1984, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputThreshold: 0.1
-  movementSource: {fileID: 1515136234}
-  newPositionThresholdDistance: 0.05
-  debugCubePrefab: {fileID: 276629096812687092, guid: 560ef25c10e49174db49686efce60359,
-    type: 3}
-  creationMode: 0
-  newGestureName: fireball
-  recognitionThreshold: 0.9
-  recognitionDelay: 1.5
-  OnRecognized:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 199885468}
-        m_TargetAssemblyTypeName: Spells.SpellController, Assembly-CSharp
-        m_MethodName: OnFinishDrawing
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!4 &199885470
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199885466}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.039114937, y: -0.12725264, z: 0.31465375}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,109 +238,72 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!1 &1515136233
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1515136234}
-  m_Layer: 0
-  m_Name: Magic wand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1515136234
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515136233}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.101, y: -0.0696, z: -0.0029}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2117384283}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1964423346
+--- !u!1001 &8999910374355858644
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7681372687013864540, guid: d93b7e04b48cd7b4fa849695dba2ce9c,
+    - target: {fileID: 8999910373441034140, guid: dcc69e0c2434eb34cbc766b21355ad72,
         type: 3}
       propertyPath: m_Name
-      value: InteractionRigOVR-FullSynthetic
+      value: Mago
       objectReference: {fileID: 0}
-    - target: {fileID: 7681372687013864541, guid: d93b7e04b48cd7b4fa849695dba2ce9c,
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
         type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7681372687013864541, guid: d93b7e04b48cd7b4fa849695dba2ce9c,
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.039114937
       objectReference: {fileID: 0}
-    - target: {fileID: 7681372687013864541, guid: d93b7e04b48cd7b4fa849695dba2ce9c,
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.12725264
       objectReference: {fileID: 0}
-    - target: {fileID: 7681372687013864541, guid: d93b7e04b48cd7b4fa849695dba2ce9c,
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.31465375
       objectReference: {fileID: 0}
-    - target: {fileID: 7681372687013864541, guid: d93b7e04b48cd7b4fa849695dba2ce9c,
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7681372687013864541, guid: d93b7e04b48cd7b4fa849695dba2ce9c,
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7681372687013864541, guid: d93b7e04b48cd7b4fa849695dba2ce9c,
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7681372687013864541, guid: d93b7e04b48cd7b4fa849695dba2ce9c,
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7681372687013864541, guid: d93b7e04b48cd7b4fa849695dba2ce9c,
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7681372687013864541, guid: d93b7e04b48cd7b4fa849695dba2ce9c,
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7681372687013864541, guid: d93b7e04b48cd7b4fa849695dba2ce9c,
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
---- !u!4 &2117384283 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 289756081986264936, guid: d93b7e04b48cd7b4fa849695dba2ce9c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1964423346}
-  m_PrefabAsset: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: dcc69e0c2434eb34cbc766b21355ad72, type: 3}
