@@ -405,7 +405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &327928484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,7 +498,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327928483}
   m_LocalRotation: {x: 0.091751345, y: -0.6510287, z: 0.07972256, w: 0.7492581}
-  m_LocalPosition: {x: 5.67, y: 5.302, z: 1.49}
+  m_LocalPosition: {x: 5.67, y: 5.473, z: 1.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1297,6 +1297,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2100069702
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8999910373441034140, guid: dcc69e0c2434eb34cbc766b21355ad72,
+        type: 3}
+      propertyPath: m_Name
+      value: Mago
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.235
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.655
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999910373441034141, guid: dcc69e0c2434eb34cbc766b21355ad72,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dcc69e0c2434eb34cbc766b21355ad72, type: 3}
 --- !u!1001 &2116958541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1667,6 +1736,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wand
       objectReference: {fileID: 0}
+    - target: {fileID: 8283664058043688652, guid: 8102ea7a8d44eb24eb0a0395bc8b8bc5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8772638510360116342, guid: 8102ea7a8d44eb24eb0a0395bc8b8bc5,
         type: 3}
       propertyPath: m_RootOrder
@@ -1874,6 +1948,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Grimoire
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738888820910358666, guid: 0bc1a8d6fe940384d90844e1325ec5d7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bc1a8d6fe940384d90844e1325ec5d7, type: 3}
