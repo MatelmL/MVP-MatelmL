@@ -56,7 +56,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  destination: {fileID: 0}
+  doorDestination: {x: 0, y: 0, z: 0}
+  damage: 5
+  timeAttack: 2
 --- !u!195 &3253936999272402041
 NavMeshAgent:
   m_ObjectHideFlags: 0

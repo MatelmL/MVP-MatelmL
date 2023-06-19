@@ -8,9 +8,12 @@ public class Goblin : MonoBehaviour
     public NavMeshAgent agent;
     Rigidbody rb;
     public Vector3 doorDestination;
+    [SerializeField] float damage, timeAttack;
+    Coroutine attackCorrutine;
+    bool isAttacking = false;
     private void Awake()
     {
-        doorDestination = FindObjectOfType<Door>().transform.position;
+        doorDestination = FindObjectOfType<GateHealth>().transform.position;
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
     }
@@ -24,10 +27,33 @@ public class Goblin : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Waypoint waypoint = other.GetComponent<Waypoint>();
-        if (waypoint != null) {
+        GateHealth gate = other.GetComponent<GateHealth>();
+        if (waypoint != null && this.isActiveAndEnabled) {
             agent.SetDestination(waypoint.newDestination.position);
             GoFinalDirection();
         }
+        else if(gate != null && this.isActiveAndEnabled)
+        {
+            attackCorrutine = StartCoroutine(Attack(gate));
+            isAttacking = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        GateHealth gate = other.GetComponent<GateHealth>();
+        if (gate != null && this.isActiveAndEnabled)
+        {
+            StopCoroutine(attackCorrutine);
+            isAttacking = false ;
+        }
+    }
+
+    IEnumerator Attack(GateHealth gate)
+    {
+        gate.TakeDamage(damage);
+        yield return new WaitForSeconds(timeAttack);
+        if(isAttacking) attackCorrutine = StartCoroutine(Attack(gate));
     }
 
     //LLAMAR SIEMPRE QUE SE MUEVA AL GOBLIN DE LUGAR PARA VERIFICAR QUE SE PUEDA LLEGAR AL PROXIMO WAYPOINT (SI NO SE PUEDE IRA A LA PUERTA)

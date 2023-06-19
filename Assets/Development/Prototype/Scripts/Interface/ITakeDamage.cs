@@ -1,6 +1,6 @@
 public interface ITakeDamage
 {
-    public int health { get; set; }
+    public float health { get; set; }
 
-    public void TakeDamage(int damageAmount);
+    public void TakeDamage(float damageAmount);
 }

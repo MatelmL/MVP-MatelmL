@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour, ITakeDamage
 {
-    private int health;
+    private float health;
 
     private void Start()
     {
         health = 1;
     }
 
-    int ITakeDamage.health { get => health; set => health = value; }
+    float ITakeDamage.health { get => health; set => health = value; }
 
     private void OnTriggerEnter(Collider other)
     {
         TakeDamage(1);
     }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(float damageAmount)
     {
         health -= damageAmount;
 

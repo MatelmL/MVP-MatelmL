@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Eh Morido");
     }
-    public void TakeDamage(int currentLife)
+    public void TakeDamage(float currentLife)
     {
         Debug.Log("Mi vida en este preciso momento es" + currentLife);
     }

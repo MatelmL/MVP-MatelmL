@@ -8,14 +8,14 @@ public class GateHealth : MonoBehaviour, ITakeDamage, IReset
     public int specialNumber;
 
     public static event Action OnDeath;
-    public static event Action<int> OnDamageTaken;
+    public static event Action<float> OnDamageTaken;
     public static event Action OnSpecialNumberReached;
 
-    [SerializeField] int currentLife;
+    [SerializeField] float currentLife;
 
     private bool eventTriggered;
 
-    public int health { get => currentLife; set => currentLife = value;}
+    public float health { get => currentLife; set => currentLife = value;}
 
     private void Awake()
     {
@@ -23,13 +23,8 @@ public class GateHealth : MonoBehaviour, ITakeDamage, IReset
         eventTriggered = false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Goblin goblin = other.GetComponent<Goblin>();
-        if(goblin != null) TakeDamage(25);
-    }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(float damageAmount)
     {
         currentLife -= damageAmount;
 
