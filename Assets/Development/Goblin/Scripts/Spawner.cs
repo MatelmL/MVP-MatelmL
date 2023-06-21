@@ -21,4 +21,16 @@ public class Spawner : MonoBehaviour
         goblinScript.GoFinalDirection();
     }
 
+    void StopSpawn() => CancelInvoke("SpawnEnemy");
+
+    
+    private void OnEnable()
+    {
+        GateHealth.OnDeath += StopSpawn;
+    }
+
+    private void OnDisable()
+    {
+        GateHealth.OnDeath -= StopSpawn;
+    }
 }
