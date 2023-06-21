@@ -22,7 +22,6 @@ public class Spawner : MonoBehaviour
     }
 
     void StopSpawn() => CancelInvoke("SpawnEnemy");
-
     
     private void OnEnable()
     {

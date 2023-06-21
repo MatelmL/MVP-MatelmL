@@ -1,14 +1,20 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using System;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class Goblin : MonoBehaviour
 {
-    public NavMeshAgent agent;
+    [NonSerialized] public NavMeshAgent agent;
     Rigidbody rb;
-    public Vector3 doorDestination;
+
+    Vector3 doorDestination;
+    [SerializeField] Vector3 finalWaypoint;
+
     [SerializeField] float damage, timeAttack;
+    
     Coroutine attackCorrutine;
     bool isAttacking = false;
     private void Awake()
@@ -69,5 +75,17 @@ public class Goblin : MonoBehaviour
         bool hasPath = agent.CalculatePath(agent.destination, path);
         if (!hasPath || path.status == NavMeshPathStatus.PathPartial || path.status == NavMeshPathStatus.PathInvalid) return false;
         else return true;
+    }
+
+    void finalPosition() => agent.SetDestination(doorDestination + finalWaypoint);
+
+    private void OnEnable()
+    {
+        GateHealth.OnDeath += finalPosition;
+    }
+
+    private void OnDisable()
+    {
+        GateHealth.OnDeath -= finalPosition;
     }
 }
