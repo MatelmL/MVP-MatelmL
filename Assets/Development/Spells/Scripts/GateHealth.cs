@@ -1,28 +1,27 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 
 public class GateHealth : MonoBehaviour, ITakeDamage, IReset
 {
     public int maxLife;
-    public int specialNumber;
 
     public static event Action OnDeath;
     public static event Action<float> OnDamageTaken;
     public static event Action OnSpecialNumberReached;
 
+    public float health { get => currentLife; set => currentLife = value; }
+
     [SerializeField] float currentLife;
 
-    private bool eventTriggered;
-
-    public float health { get => currentLife; set => currentLife = value;}
+    [SerializeField] List<int> specialNumbers = new List<int> { 75, 50, 25 };
+    private List<int> triggeredSpecialNumbers = new List<int>();
 
     private void Awake()
     {
         currentLife = maxLife;
-        eventTriggered = false;
     }
-
 
     public void TakeDamage(float damageAmount)
     {
@@ -37,22 +36,24 @@ public class GateHealth : MonoBehaviour, ITakeDamage, IReset
         {
             // En caso de necesitarse verificar el evento incluso en la muerte, ponerlo fuera del if y sacarla el else
             OnDamageTaken?.Invoke(currentLife);
-            CheckSpecialNumberReached();
+            CheckSpecialNumberReached(specialNumbers);
         }
     }
 
     public void ResetLife()
     {
         currentLife = maxLife;
-        eventTriggered = false;
     }
 
-    private void CheckSpecialNumberReached()
+    private void CheckSpecialNumberReached(List<int> specialNumbers)
     {
-        if(currentLife <= specialNumber && !eventTriggered)
+        foreach (int specialNumber in specialNumbers)
         {
-            eventTriggered = true;
-            OnSpecialNumberReached?.Invoke();
+            if (currentLife <= specialNumber && !triggeredSpecialNumbers.Contains(specialNumber))
+            {
+                triggeredSpecialNumbers.Add(specialNumber);
+                OnSpecialNumberReached?.Invoke();
+            }
         }
     }
 }
