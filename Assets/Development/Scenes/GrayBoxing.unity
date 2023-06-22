@@ -1185,6 +1185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3349e1133b08cdb4ab85170e45af88bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 1
 --- !u!114 &1559413511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1198,8 +1199,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLife: 100
-  specialNumber: 50
   currentLife: 0
+  specialNumbers: 4b0000003200000019000000
 --- !u!1 &1659114009
 GameObject:
   m_ObjectHideFlags: 0
