@@ -9,7 +9,7 @@ public class GateHealth : MonoBehaviour, ITakeDamage, IReset
 
     public static event Action OnDeath;
     public static event Action<float> OnDamageTaken;
-    public static event Action OnSpecialNumberReached;
+    public static event Action<float> OnSpecialNumberReached;
 
     public float health { get => currentLife; set => currentLife = value; }
 
@@ -52,7 +52,7 @@ public class GateHealth : MonoBehaviour, ITakeDamage, IReset
             if (currentLife <= specialNumber && !triggeredSpecialNumbers.Contains(specialNumber))
             {
                 triggeredSpecialNumbers.Add(specialNumber);
-                OnSpecialNumberReached?.Invoke();
+                OnSpecialNumberReached?.Invoke(specialNumber);
             }
         }
     }

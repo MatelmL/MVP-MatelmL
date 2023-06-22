@@ -8,11 +8,11 @@ public class GameManager : MonoBehaviour
     }
     public void TakeDamage(float currentLife)
     {
-        Debug.Log("Mi vida en este preciso momento es" + currentLife);
+        Debug.Log("Mi vida en este preciso momento es " + currentLife);
     }
-    public void SpecialNumber()
+    public void SpecialNumber(float specialNumber)
     {
-        Debug.Log("El verdadero numero");
+        Debug.Log("El verdadero numero " + specialNumber);
     }
 
     private void OnEnable()
