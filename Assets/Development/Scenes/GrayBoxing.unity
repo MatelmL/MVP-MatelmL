@@ -1470,7 +1470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goblinsList: []
   amount: 30
-  goblin: {fileID: 592049301703332070, guid: bab0f2cdaa5449544a75061e93dc9ec5, type: 3}
+  goblin: {fileID: 592049301703332070, guid: d6e6aad68c6ded541a553f7a14547265, type: 3}
 --- !u!4 &1659114011
 Transform:
   m_ObjectHideFlags: 0
