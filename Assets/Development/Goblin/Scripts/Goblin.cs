@@ -41,7 +41,6 @@ public class Goblin : MonoBehaviour
         }
         else if(gate != null && this.isActiveAndEnabled)
         {
-            animator.SetBool("Attack", true);
             attackCorrutine = StartCoroutine(Attack(gate));
             isAttacking = true;
         }
@@ -61,6 +60,7 @@ public class Goblin : MonoBehaviour
     IEnumerator Attack(GateHealth gate)
     {
         gate.TakeDamage(damage);
+        animator.SetBool("Attack", true);
         yield return new WaitForSeconds(timeAttack);
         if(isAttacking) attackCorrutine = StartCoroutine(Attack(gate));
     }
