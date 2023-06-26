@@ -53,6 +53,7 @@ MonoBehaviour:
   finalWaypoint: {x: -9, y: 0, z: -5}
   damage: 5
   timeAttack: 2
+  animator: {fileID: 500598977026283558}
 --- !u!195 &3253936999272402041
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -193,6 +194,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64b866fff570ad947873f878bc464412, type: 3}
+--- !u!95 &500598977026283558 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2473842268673910532, guid: 64b866fff570ad947873f878bc464412,
+    type: 3}
+  m_PrefabInstance: {fileID: 2640981238952034082}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5769762903509860956 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8409617688096832894, guid: 64b866fff570ad947873f878bc464412,
