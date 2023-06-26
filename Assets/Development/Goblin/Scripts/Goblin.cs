@@ -17,6 +17,7 @@ public class Goblin : MonoBehaviour
     
     Coroutine attackCorrutine;
     bool isAttacking = false;
+    [SerializeField] Animator animator;
     private void Awake()
     {
         doorDestination = FindObjectOfType<GateHealth>().transform.position;
@@ -40,6 +41,7 @@ public class Goblin : MonoBehaviour
         }
         else if(gate != null && this.isActiveAndEnabled)
         {
+            animator.SetBool("Attack", true);
             attackCorrutine = StartCoroutine(Attack(gate));
             isAttacking = true;
         }
@@ -50,6 +52,7 @@ public class Goblin : MonoBehaviour
         GateHealth gate = other.GetComponent<GateHealth>();
         if (gate != null && this.isActiveAndEnabled)
         {
+            animator.SetBool("Attack", false);
             StopCoroutine(attackCorrutine);
             isAttacking = false ;
         }

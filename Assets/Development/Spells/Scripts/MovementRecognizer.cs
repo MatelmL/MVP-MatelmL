@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -101,7 +102,7 @@ public class MovementRecognizer : MonoBehaviour
             newGesture.Name = newGestureName;
             trainingSet.Add(newGesture);
 
-            string fileName = Application.persistentDataPath + "/" + newGestureName + ".xml";
+            string fileName = Application.persistentDataPath + "/" + newGestureName + "-" + DateTime.Now.ToFileTime() + ".xml";
             GestureIO.WriteGesture(pointArray, newGestureName, fileName);
         }
         //recognize
