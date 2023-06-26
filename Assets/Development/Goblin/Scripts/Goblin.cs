@@ -23,6 +23,8 @@ public class Goblin : MonoBehaviour
         doorDestination = FindObjectOfType<GateHealth>().transform.position;
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponentInChildren<Animator>();
+
     }
 
     public void ToggleState()
@@ -41,9 +43,9 @@ public class Goblin : MonoBehaviour
         }
         else if(gate != null && this.isActiveAndEnabled)
         {
+            GetComponentInChildren<Animator>().SetFloat("Speed", 0);
             attackCorrutine = StartCoroutine(Attack(gate));
             isAttacking = true;
-            GetComponentInChildren<Animator>().SetBool("Attack", isAttacking);
         }
     }
 
@@ -52,17 +54,17 @@ public class Goblin : MonoBehaviour
         GateHealth gate = other.GetComponent<GateHealth>();
         if (gate != null && this.isActiveAndEnabled)
         {
-            animator.SetBool("Attack", false);
             StopCoroutine(attackCorrutine);
             isAttacking = false ;
-            GetComponentInChildren<Animator>().SetBool("Attack", isAttacking);
+            GetComponentInChildren<Animator>().SetFloat("Speed", 1);
+
         }
     }
 
     IEnumerator Attack(GateHealth gate)
     {
         gate.TakeDamage(damage);
-        animator.SetBool("Attack", true);
+        animator.SetTrigger("Attack");
         yield return new WaitForSeconds(timeAttack);
         if(isAttacking) attackCorrutine = StartCoroutine(Attack(gate));
     }
@@ -84,10 +86,11 @@ public class Goblin : MonoBehaviour
 
     void finalPosition()
     {
-        GetComponentInChildren<Animator>().SetFloat("Speed", 0);
-        GetComponentInChildren<Animator>().SetBool("Attack", false);
         agent.enabled = false;
-
+        isAttacking = false;
+        animator.ResetTrigger("Attack");
+        animator.SetFloat("Speed", 0);
+        //lo que estaba antes set destination
     }
     
 
