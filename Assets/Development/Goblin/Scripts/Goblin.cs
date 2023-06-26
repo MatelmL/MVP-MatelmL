@@ -43,6 +43,7 @@ public class Goblin : MonoBehaviour
         {
             attackCorrutine = StartCoroutine(Attack(gate));
             isAttacking = true;
+            GetComponentInChildren<Animator>().SetBool("Attack", isAttacking);
         }
     }
 
@@ -54,6 +55,7 @@ public class Goblin : MonoBehaviour
             animator.SetBool("Attack", false);
             StopCoroutine(attackCorrutine);
             isAttacking = false ;
+            GetComponentInChildren<Animator>().SetBool("Attack", isAttacking);
         }
     }
 
@@ -80,7 +82,14 @@ public class Goblin : MonoBehaviour
         else return true;
     }
 
-    void finalPosition() => agent.SetDestination(doorDestination + finalWaypoint);
+    void finalPosition()
+    {
+        GetComponentInChildren<Animator>().SetFloat("Speed", 0);
+        GetComponentInChildren<Animator>().SetBool("Attack", false);
+        agent.enabled = false;
+
+    }
+    
 
     private void OnEnable()
     {
