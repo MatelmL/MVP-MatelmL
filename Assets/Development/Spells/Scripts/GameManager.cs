@@ -1,7 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
+using System;
 
 public class GameManager : MonoBehaviour
 {
+    public UnityEvent StartGameUE;
+    public static Action StartGameSE;
     public void Die()
     {
         Debug.Log("Eh Morido");
