@@ -1003,7 +1003,7 @@ GameObject:
   - component: {fileID: 8288490418623207336}
   - component: {fileID: 2480418752965622038}
   m_Layer: 0
-  m_Name: Gobling
+  m_Name: Gobling Animated
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
