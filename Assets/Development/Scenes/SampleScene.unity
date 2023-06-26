@@ -355,6 +355,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gobling
       objectReference: {fileID: 0}
+    - target: {fileID: 3363448293350594408, guid: 4fb335aa859a49049afeae35c0380628,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4952684003575551168, guid: 4fb335aa859a49049afeae35c0380628,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -515,6 +520,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fb335aa859a49049afeae35c0380628, type: 3}
+--- !u!1001 &8304162475745560804
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8409617688096832894, guid: 64b866fff570ad947873f878bc464412,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409617688096832894, guid: 64b866fff570ad947873f878bc464412,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409617688096832894, guid: 64b866fff570ad947873f878bc464412,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409617688096832894, guid: 64b866fff570ad947873f878bc464412,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409617688096832894, guid: 64b866fff570ad947873f878bc464412,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409617688096832894, guid: 64b866fff570ad947873f878bc464412,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409617688096832894, guid: 64b866fff570ad947873f878bc464412,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409617688096832894, guid: 64b866fff570ad947873f878bc464412,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409617688096832894, guid: 64b866fff570ad947873f878bc464412,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409617688096832894, guid: 64b866fff570ad947873f878bc464412,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409617688096832894, guid: 64b866fff570ad947873f878bc464412,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9223132444946474948, guid: 64b866fff570ad947873f878bc464412,
+        type: 3}
+      propertyPath: m_Name
+      value: Gobling (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 64b866fff570ad947873f878bc464412, type: 3}
 --- !u!1001 &8999910374355858644
 PrefabInstance:
   m_ObjectHideFlags: 0
