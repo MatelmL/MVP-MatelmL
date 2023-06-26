@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System;
 using System.Collections.Generic;
 
@@ -6,6 +7,8 @@ using System.Collections.Generic;
 public class GateHealth : MonoBehaviour, ITakeDamage, IReset
 {
     public int maxLife;
+
+    public UnityEvent OnDeathUnity;
 
     public static event Action OnDeath;
     public static event Action<float> OnDamageTaken;
@@ -31,6 +34,7 @@ public class GateHealth : MonoBehaviour, ITakeDamage, IReset
         {
             currentLife = 0;
             OnDeath?.Invoke();
+            OnDeathUnity.Invoke();
         }
         else
         {

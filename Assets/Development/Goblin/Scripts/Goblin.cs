@@ -79,6 +79,14 @@ public class Goblin : MonoBehaviour
 
     void finalPosition() => agent.SetDestination(doorDestination + finalWaypoint);
 
+    public void GoblinDie()
+    {
+        ToggleState();
+        SpawnManager.instance.enemiesActive--;
+        SpawnManager.instance.SpawnWave();
+        gameObject.SetActive(false);
+    }
+
     private void OnEnable()
     {
         GateHealth.OnDeath += finalPosition;

@@ -2,39 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class SpawnManager : MonoBehaviour
 {
-    public float timeSpawn;
     public int sizeWave;
-    //para parar el spawneo de enemigos poner booleando en false
-    bool isActive = true;
+    [NonSerialized] public int enemiesActive = 0;
+     public bool isActive = true;
     Spawner[] spawners;
+    public static SpawnManager instance;
+
+    private void Awake()
+    {
+        if (instance != null && instance != this) Destroy(this.gameObject);
+        else instance = this;
+    }
+
     void Start()
     {
         spawners = FindObjectsOfType<Spawner>();
         // esto esta en el start pero yo lo pondria en un evento llamado StartGame
-        StartCoroutine(SpawnCoroutine());
+        SpawnWave();
     }
 
-    IEnumerator SpawnCoroutine()
-    {
-        yield return new WaitForSeconds(timeSpawn);
-        if (isActive)
-        {
-            SpawnWave();
-            StartCoroutine(SpawnCoroutine());
-        }
-    }
+    public void ChangeState() =>isActive = false;
 
-    void SpawnWave()
+
+    public void SpawnWave()
     {
-        List<Spawner> spawnersActive = spawners.ToList();
-        for (int i = 0; i < sizeWave; i++)
+        if (enemiesActive <= 0 && isActive)
         {
-            int randomSpawn = Random.Range(0, spawnersActive.Count);
-            spawnersActive[randomSpawn].SpawnEnemy();
-            spawnersActive.Remove(spawnersActive[randomSpawn]);
+            List<Spawner> spawnersActive = spawners.ToList();
+            enemiesActive = sizeWave;
+            for (int i = 0; i < sizeWave; i++)
+            {
+                int randomSpawn = UnityEngine.Random.Range(0, spawnersActive.Count);
+                spawnersActive[randomSpawn].SpawnEnemy();
+                spawnersActive.Remove(spawnersActive[randomSpawn]);
+            }
         }
     }
 }
