@@ -190,6 +190,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: espada model 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7250626205167277633, guid: 3b888bf2dc08e3a409cfc81f1423ef27,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.23
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b888bf2dc08e3a409cfc81f1423ef27, type: 3}
 --- !u!1001 &2640981238952034082
