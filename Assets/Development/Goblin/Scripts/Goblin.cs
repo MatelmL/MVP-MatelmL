@@ -86,7 +86,7 @@ public class Goblin : MonoBehaviour
     {
         ToggleState();
         SpawnManager.instance.enemiesActive--;
-        SpawnManager.instance.SpawnWave();
+        SpawnManager.instance.StartLevel();
         gameObject.SetActive(false);
     }
 
