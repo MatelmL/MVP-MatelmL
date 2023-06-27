@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace Spells
 {
-    public abstract class Targets
+    public abstract class Targets : MonoBehaviour
     {
-        public SOSpell spellData; // Set by parent, use to get spell params from the SO
+        [HideInInspector] public SOSpell spellData; // Set by parent, use to get spell params from the SO
         public abstract Collider[] GetTargets(Collision other);
     }
 }
