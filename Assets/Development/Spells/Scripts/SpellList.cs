@@ -33,13 +33,13 @@ namespace Spells
         private void LoadSpells()
         {
             spells = Resources.LoadAll<SOSpell>("Spells");
+            // add spells to queue
             foreach (SOSpell spell in spells)
             {
-                // add all spells to queue
                 spellQueues.Add(spell.name, new Queue<SOSpell.Instance>());
                 foreach (int i in Enumerable.Range(0, SpellQueueSize))
                 {
-                    spellQueues[spell.name].Enqueue(spell.GetInstance());
+                    spellQueues[spell.name].Enqueue(spell.GetInstance(transform));
                 }
             }
         }
