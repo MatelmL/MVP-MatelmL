@@ -1598,8 +1598,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6a469f227003c4c81aff4bc58101b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeWave: 5
   isActive: 1
+  levels:
+  - countEnemy: 10
+    countWaves: 2
+    minSizeWave: 3
+    maxSizeWave: 6
+    timeToSpawn: 3
+  - countEnemy: 12
+    countWaves: 3
+    minSizeWave: 4
+    maxSizeWave: 5
+    timeToSpawn: 2
+  actualLevel: -1
 --- !u!114 &1995456419
 MonoBehaviour:
   m_ObjectHideFlags: 0
