@@ -1600,36 +1600,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   levels:
-  - countEnemy: 10
-    countWaves: 2
-    minSizeWave: 3
-    maxSizeWave: 6
+  - waves: 01000000020000000300000004000000
+    timeToSpawn: 5
+  - waves: 01000000020000000300000004000000
+    timeToSpawn: 4
+  - waves: 01000000020000000300000004000000
     timeToSpawn: 3
-  - countEnemy: 12
-    countWaves: 3
-    minSizeWave: 4
-    maxSizeWave: 5
+  - waves: 01000000020000000300000004000000
     timeToSpawn: 2
-  - countEnemy: 20
-    countWaves: 5
-    minSizeWave: 2
-    maxSizeWave: 6
-    timeToSpawn: 2
-  - countEnemy: 30
-    countWaves: 5
-    minSizeWave: 4
-    maxSizeWave: 8
-    timeToSpawn: 1.5
-  - countEnemy: 50
-    countWaves: 8
-    minSizeWave: 4
-    maxSizeWave: 15
+  - waves: 01000000020000000300000004000000
     timeToSpawn: 1
   actualLevel: -1
-  enemiesToSpawn: 0
-  wavesToSpawn: 0
-  minSizeWave: 0
-  maxSizeWave: 0
 --- !u!114 &1995456419
 MonoBehaviour:
   m_ObjectHideFlags: 0
