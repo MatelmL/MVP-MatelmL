@@ -86,7 +86,7 @@ public class Goblin : MonoBehaviour
     {
         ToggleState();
         LevelManager.instance.enemiesActive--;
-        LevelManager.instance.StartLevel();
+        if (LevelManager.instance.enemiesActive <= 0) LevelManager.NextLevel.Invoke();
         gameObject.SetActive(false);
     }
 

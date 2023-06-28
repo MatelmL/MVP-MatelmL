@@ -1599,6 +1599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
+  timeToChangeLevel: 4
   levels:
   - waves: 01000000020000000300000004000000
     timeToSpawn: 5
@@ -1610,7 +1611,6 @@ MonoBehaviour:
     timeToSpawn: 2
   - waves: 01000000020000000300000004000000
     timeToSpawn: 1
-  actualLevel: -1
 --- !u!114 &1995456419
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,14 +6,17 @@ using System;
 
 public class LevelManager : MonoBehaviour
 {
-    [NonSerialized] public int enemiesActive = 0;
-     public bool isActive = true;
+    public bool isActive = true;
     Spawner[] spawners;
     public static LevelManager instance;
-    [SerializeField] Level[] levels;
-    public int actualLevel = -1;
+
+    [NonSerialized] public int enemiesActive = 0;
+    int actualLevel = -1;
     int actualWave;
     float timeToSpawn;
+    [SerializeField] float timeToChangeLevel;
+    [SerializeField] Level[] levels;
+    public static Action NextLevel;
 
     private void Awake()
     {
@@ -44,32 +47,45 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator LevelActive(Level level)
     {
-        yield return new WaitForSeconds(timeToSpawn);
-        
         SpawnWave(level.waves[actualWave]);
         actualWave++;
-        if(actualWave< level.waves.Length) StartCoroutine(LevelActive(level));
+        yield return new WaitForSeconds(timeToSpawn);
+        if (actualWave < level.waves.Length) StartCoroutine(LevelActive(level));
     }
 
     public void StartLevel()
     {
-        if (enemiesActive <= 0)
-        {
-            actualLevel++;
-            if (actualLevel < levels.Length)
+     actualLevel++;
+     if (actualLevel < levels.Length)
             {
                 actualWave = 0;
                 foreach (var item in levels[actualLevel].waves) enemiesActive += item;
                 timeToSpawn = levels[actualLevel].timeToSpawn;
                 StartCoroutine(LevelActive(levels[actualLevel]));
             }
-            else print("Ganaste");
-        }
+     else print("Ganaste");
     }
+
+    IEnumerator ChangeLevel()
+    {
+        yield return new WaitForSeconds(timeToChangeLevel);
+        StartLevel();
+        print("CAMBIE DE NIVEL");
+    }
+
+    private void OnEnable()
+    {
+        NextLevel += () => StartCoroutine(ChangeLevel());
+    }
+
+    private void OnDisable()
+    {
+        NextLevel -= () => StartCoroutine(ChangeLevel());
+    }
+
     [Serializable] public class Level
     {
         public int[] waves;
         public float timeToSpawn;
     }
-
 }
