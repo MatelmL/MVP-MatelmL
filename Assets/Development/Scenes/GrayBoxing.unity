@@ -1408,7 +1408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3349e1133b08cdb4ab85170e45af88bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActive: 1
+  isActive: 0
 --- !u!114 &1559413511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1469,7 +1469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goblinsList: []
-  amount: 30
+  amount: 50
   goblin: {fileID: 592049301703332070, guid: d6e6aad68c6ded541a553f7a14547265, type: 3}
 --- !u!4 &1659114011
 Transform:
@@ -1610,7 +1610,26 @@ MonoBehaviour:
     minSizeWave: 4
     maxSizeWave: 5
     timeToSpawn: 2
+  - countEnemy: 20
+    countWaves: 5
+    minSizeWave: 2
+    maxSizeWave: 6
+    timeToSpawn: 2
+  - countEnemy: 30
+    countWaves: 5
+    minSizeWave: 4
+    maxSizeWave: 8
+    timeToSpawn: 1.5
+  - countEnemy: 50
+    countWaves: 8
+    minSizeWave: 4
+    maxSizeWave: 15
+    timeToSpawn: 1
   actualLevel: -1
+  enemiesToSpawn: 0
+  wavesToSpawn: 0
+  minSizeWave: 0
+  maxSizeWave: 0
 --- !u!114 &1995456419
 MonoBehaviour:
   m_ObjectHideFlags: 0

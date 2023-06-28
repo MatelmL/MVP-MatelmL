@@ -4,15 +4,15 @@ using UnityEngine;
 using System.Linq;
 using System;
 
-public class SpawnManager : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
     [NonSerialized] public int enemiesActive = 0;
      public bool isActive = true;
     Spawner[] spawners;
-    public static SpawnManager instance;
+    public static LevelManager instance;
     [SerializeField] Level[] levels;
     public int actualLevel = -1;
-    int enemiesToSpawn, wavesToSpawn, minSizeWave,maxSizeWave;
+    int actualWave;
     float timeToSpawn;
 
     private void Awake()
@@ -34,27 +34,21 @@ public class SpawnManager : MonoBehaviour
     public void SpawnWave(int sizeWave)
     {
             List<Spawner> spawnersActive = spawners.ToList();
-            enemiesActive = sizeWave;
             for (int i = 0; i < sizeWave; i++)
             {
                 int randomSpawn = UnityEngine.Random.Range(0, spawnersActive.Count);
                 spawnersActive[randomSpawn].SpawnEnemy();
                 spawnersActive.Remove(spawnersActive[randomSpawn]);
             }
-        enemiesToSpawn -= sizeWave;
     }
 
-    IEnumerator LevelActive()
+    IEnumerator LevelActive(Level level)
     {
         yield return new WaitForSeconds(timeToSpawn);
-        if (wavesToSpawn == 1) SpawnWave(enemiesToSpawn);
-        else
-        {
-            int actualSpawn = UnityEngine.Random.Range(minSizeWave, maxSizeWave);
-            SpawnWave(actualSpawn);
-            StartCoroutine(LevelActive());
-        }
-        wavesToSpawn--;
+        
+        SpawnWave(level.waves[actualWave]);
+        actualWave++;
+        if(actualWave< level.waves.Length) StartCoroutine(LevelActive(level));
     }
 
     public void StartLevel()
@@ -64,20 +58,18 @@ public class SpawnManager : MonoBehaviour
             actualLevel++;
             if (actualLevel < levels.Length)
             {
-                enemiesActive = levels[actualLevel].countEnemy;
-                enemiesToSpawn = levels[actualLevel].countEnemy;
-                wavesToSpawn = levels[actualLevel].countWaves;
-                minSizeWave = levels[actualLevel].minSizeWave;
-                maxSizeWave = levels[actualLevel].maxSizeWave;
+                actualWave = 0;
+                foreach (var item in levels[actualLevel].waves) enemiesActive += item;
                 timeToSpawn = levels[actualLevel].timeToSpawn;
-                StartCoroutine(LevelActive());
+                StartCoroutine(LevelActive(levels[actualLevel]));
             }
             else print("Ganaste");
         }
     }
     [Serializable] public class Level
     {
-        public int countEnemy, countWaves, minSizeWave, maxSizeWave;
+        public int[] waves;
         public float timeToSpawn;
     }
+
 }

@@ -85,8 +85,8 @@ public class Goblin : MonoBehaviour
     public void GoblinDie()
     {
         ToggleState();
-        SpawnManager.instance.enemiesActive--;
-        SpawnManager.instance.StartLevel();
+        LevelManager.instance.enemiesActive--;
+        LevelManager.instance.StartLevel();
         gameObject.SetActive(false);
     }
 
