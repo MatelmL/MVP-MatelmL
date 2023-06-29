@@ -55,7 +55,7 @@ public class Goblin : MonoBehaviour
         }
     }
 
-    IEnumerator Attack(GateHealth gate)
+    IEnumerator Attack(GateHealth gate) 
     {
         gate.TakeDamage(damage);
         yield return new WaitForSeconds(timeAttack);
