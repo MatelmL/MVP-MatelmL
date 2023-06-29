@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PDollarGestureRecognizer;
 using System.IO;
+using Spells;
 using UnityEngine.Events;
 
 public class MovementRecognizer : MonoBehaviour
@@ -42,6 +43,12 @@ public class MovementRecognizer : MonoBehaviour
     {
         if (Time.timeScale == 0f) return;
         bool isPressed = Input.GetAxis("RightControllerTrigger") > inputThreshold;
+
+        if (SpellController.instance.heldSpell != null)
+        {
+            if (isPressed) SpellController.instance.Shoot();
+            return;
+        }
         //Start The Movement
         if (!isMoving && isPressed)
         {

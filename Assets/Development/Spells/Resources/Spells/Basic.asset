@@ -15,7 +15,7 @@ MonoBehaviour:
   name: basic
   proyectile: {fileID: 7954170096657420058, guid: 7cb1b61732ea27040b10e1b7ac2bcf0b,
     type: 3}
-  proyectileSpeed: 15
+  proyectileSpeed: 1.85
   radius: 0
   knockback: 10
   heldSpellVFX: {fileID: 0}
