@@ -15,7 +15,7 @@ public class Goblin : MonoBehaviour
 
     [SerializeField] float damage, timeAttack;
     
-    Coroutine attackCorrutine;
+    Coroutine attackCoroutine;
     bool isAttacking = false;
     [SerializeField] Animator animator;
     private void Awake()
@@ -41,7 +41,7 @@ public class Goblin : MonoBehaviour
         }
         else if(gate != null && this.isActiveAndEnabled)
         {
-            attackCorrutine = StartCoroutine(Attack(gate));
+            attackCoroutine = StartCoroutine(Attack(gate));
             isAttacking = true;
         }
     }
@@ -52,7 +52,7 @@ public class Goblin : MonoBehaviour
         if (gate != null && this.isActiveAndEnabled)
         {
             animator.SetBool("Attack", false);
-            StopCoroutine(attackCorrutine);
+            StopCoroutine(attackCoroutine);
             isAttacking = false ;
         }
     }
@@ -62,7 +62,7 @@ public class Goblin : MonoBehaviour
         gate.TakeDamage(damage);
         animator.SetBool("Attack", true);
         yield return new WaitForSeconds(timeAttack);
-        if(isAttacking) attackCorrutine = StartCoroutine(Attack(gate));
+        if(isAttacking) attackCoroutine = StartCoroutine(Attack(gate));
     }
 
     //LLAMAR SIEMPRE QUE SE MUEVA AL GOBLIN DE LUGAR PARA VERIFICAR QUE SE PUEDA LLEGAR AL PROXIMO WAYPOINT (SI NO SE PUEDE IRA A LA PUERTA)

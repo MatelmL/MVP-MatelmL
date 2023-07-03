@@ -34,17 +34,17 @@ public class LevelManager : MonoBehaviour
 
     public void SpawnWave(int sizeWave)
     {
-            List<Spawner> spawnersActive = spawners.ToList();
-            for (int i = 0; i < sizeWave; i++)
-            {
-                int randomSpawn = UnityEngine.Random.Range(0, spawnersActive.Count);
-            //no es tan necesario si nos aseguramos que haya spawners suficientes para spawnear todos los enemigos
-            if (spawnersActive.Count > 0)
-            {
-                spawnersActive[randomSpawn].SpawnEnemy();
-                spawnersActive.Remove(spawnersActive[randomSpawn]);
-            }
-            }
+        List<Spawner> spawnersActive = spawners.ToList();
+        for (int i = 0; i < sizeWave; i++)
+        {
+            int randomSpawn = UnityEngine.Random.Range(0, spawnersActive.Count);
+        //no es tan necesario si nos aseguramos que haya spawners suficientes para spawnear todos los enemigos
+        if (spawnersActive.Count > 0)
+        {
+            spawnersActive[randomSpawn].SpawnEnemy();
+            spawnersActive.Remove(spawnersActive[randomSpawn]);
+        }
+        }
     }
 
     IEnumerator LevelActive(Level level)
@@ -57,15 +57,15 @@ public class LevelManager : MonoBehaviour
 
     public void StartLevel()
     {
-     actualLevel++;
-     if (actualLevel < levels.Length)
-            {
-                actualWave = 0;
-                foreach (var item in levels[actualLevel].waves) enemiesActive += item;
-                timeToSpawn = levels[actualLevel].timeToSpawn;
-                StartCoroutine(LevelActive(levels[actualLevel]));
-            }
-        Win?.Invoke();
+        actualLevel++;
+        if (actualLevel < levels.Length)
+        {
+            actualWave = 0;
+            foreach (var item in levels[actualLevel].waves) enemiesActive += item;
+            timeToSpawn = levels[actualLevel].timeToSpawn;
+            StartCoroutine(LevelActive(levels[actualLevel]));
+        }
+        else Win?.Invoke();
     }
 
     IEnumerator ChangeLevel()
