@@ -14,18 +14,4 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("El verdadero numero " + specialNumber);
     }
-
-    private void OnEnable()
-    {
-         GateHealth.OnDeath += Die;
-         GateHealth.OnDamageTaken += TakeDamage;
-         GateHealth.OnSpecialNumberReached += SpecialNumber;
-    }
-
-     private void OnDisable()
-     {
-         GateHealth.OnDeath -= Die;
-         GateHealth.OnDamageTaken -= TakeDamage;
-         GateHealth.OnSpecialNumberReached -= SpecialNumber;
-     }
 }

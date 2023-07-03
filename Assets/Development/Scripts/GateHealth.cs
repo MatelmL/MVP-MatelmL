@@ -1,15 +1,16 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-
+using UnityEngine.Events;
 
 public class GateHealth : MonoBehaviour, ITakeDamage, IReset
 {
     public int maxLife;
 
+    public UnityEvent<float> OnDamageTaken;
+    public UnityEvent<float> OnSpecialNumberReached;
+
     public static event Action OnDeath;
-    public static event Action<float> OnDamageTaken;
-    public static event Action<float> OnSpecialNumberReached;
 
     public float health { get => currentLife; set => currentLife = value; }
 
