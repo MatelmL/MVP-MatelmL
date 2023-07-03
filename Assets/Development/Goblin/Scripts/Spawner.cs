@@ -1,16 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] float timeSpawn;
     [SerializeField] Transform firstDestination;
-    private void Start()
-    {
-        InvokeRepeating("SpawnEnemy", timeSpawn, timeSpawn);
-    }
 
-    void SpawnEnemy()
+    public void SpawnEnemy()
     {
         GameObject goblinObject = PoolGoblin.instance.GetNewGoblin();
         Goblin goblinScript = goblinObject.GetComponent<Goblin>();
@@ -21,15 +17,4 @@ public class Spawner : MonoBehaviour
         goblinScript.GoFinalDirection();
     }
 
-    void StopSpawn() => CancelInvoke("SpawnEnemy");
-    
-    private void OnEnable()
-    {
-        GateHealth.OnDeath += StopSpawn;
-    }
-
-    private void OnDisable()
-    {
-        GateHealth.OnDeath -= StopSpawn;
-    }
 }

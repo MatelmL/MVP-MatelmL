@@ -15,8 +15,9 @@ public class Goblin : MonoBehaviour
 
     [SerializeField] float damage, timeAttack;
     
-    Coroutine attackCorrutine;
+    Coroutine attackCoroutine;
     bool isAttacking = false;
+    [SerializeField] Animator animator;
     private void Awake()
     {
         doorDestination = FindObjectOfType<GateHealth>().transform.position;
@@ -40,7 +41,7 @@ public class Goblin : MonoBehaviour
         }
         else if(gate != null && this.isActiveAndEnabled)
         {
-            attackCorrutine = StartCoroutine(Attack(gate));
+            attackCoroutine = StartCoroutine(Attack(gate));
             isAttacking = true;
         }
     }
@@ -50,7 +51,8 @@ public class Goblin : MonoBehaviour
         GateHealth gate = other.GetComponent<GateHealth>();
         if (gate != null && this.isActiveAndEnabled)
         {
-            StopCoroutine(attackCorrutine);
+            animator.SetBool("Attack", false);
+            StopCoroutine(attackCoroutine);
             isAttacking = false ;
         }
     }
@@ -58,8 +60,9 @@ public class Goblin : MonoBehaviour
     IEnumerator Attack(GateHealth gate)
     {
         gate.TakeDamage(damage);
+        animator.SetBool("Attack", true);
         yield return new WaitForSeconds(timeAttack);
-        if(isAttacking) attackCorrutine = StartCoroutine(Attack(gate));
+        if(isAttacking) attackCoroutine = StartCoroutine(Attack(gate));
     }
 
     //LLAMAR SIEMPRE QUE SE MUEVA AL GOBLIN DE LUGAR PARA VERIFICAR QUE SE PUEDA LLEGAR AL PROXIMO WAYPOINT (SI NO SE PUEDE IRA A LA PUERTA)
@@ -78,6 +81,14 @@ public class Goblin : MonoBehaviour
     }
 
     void finalPosition() => agent.SetDestination(doorDestination + finalWaypoint);
+
+    public void GoblinDie()
+    {
+        ToggleState();
+        LevelManager.instance.enemiesActive--;
+        if (LevelManager.instance.enemiesActive <= 0) LevelManager.NextLevel.Invoke();
+        gameObject.SetActive(false);
+    }
 
     private void OnEnable()
     {
