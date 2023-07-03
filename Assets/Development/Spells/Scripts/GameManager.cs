@@ -6,6 +6,13 @@ public class GameManager : MonoBehaviour
 {
     public UnityEvent StartGameUE;
     public static Action StartGameSE;
+
+    //solo esta para testear, hay que sacar esto...
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P)) StartGameUE?.Invoke();    
+    }
+
     public void Die()
     {
         Debug.Log("Eh Morido");

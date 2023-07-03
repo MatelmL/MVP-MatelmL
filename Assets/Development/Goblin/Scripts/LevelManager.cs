@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     float timeToSpawn;
     [SerializeField] float timeToChangeLevel;
     [SerializeField] Level[] levels;
-    public static Action NextLevel;
+    public static Action NextLevel, Win;
 
     private void Awake()
     {
@@ -27,11 +27,9 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         spawners = FindObjectsOfType<Spawner>();
-        // esto esta en el start pero yo lo pondria en un evento llamado StartGame
-        StartLevel();
     }
 
-    public void ChangeState() =>isActive = false;
+    public void ChangeState() => isActive = false;
 
 
     public void SpawnWave(int sizeWave)
@@ -40,8 +38,12 @@ public class LevelManager : MonoBehaviour
             for (int i = 0; i < sizeWave; i++)
             {
                 int randomSpawn = UnityEngine.Random.Range(0, spawnersActive.Count);
+            //no es tan necesario si nos aseguramos que haya spawners suficientes para spawnear todos los enemigos
+            if (spawnersActive.Count > 0)
+            {
                 spawnersActive[randomSpawn].SpawnEnemy();
                 spawnersActive.Remove(spawnersActive[randomSpawn]);
+            }
             }
     }
 
@@ -63,24 +65,25 @@ public class LevelManager : MonoBehaviour
                 timeToSpawn = levels[actualLevel].timeToSpawn;
                 StartCoroutine(LevelActive(levels[actualLevel]));
             }
-     else print("Ganaste");
+        Win?.Invoke();
     }
 
     IEnumerator ChangeLevel()
     {
         yield return new WaitForSeconds(timeToChangeLevel);
         StartLevel();
-        print("CAMBIE DE NIVEL");
     }
 
     private void OnEnable()
     {
         NextLevel += () => StartCoroutine(ChangeLevel());
+        Win += () => print("Ganaste");
     }
 
     private void OnDisable()
     {
         NextLevel -= () => StartCoroutine(ChangeLevel());
+        Win -= () => print("Ganaste");
     }
 
     [Serializable] public class Level
