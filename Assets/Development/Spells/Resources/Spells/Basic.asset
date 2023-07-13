@@ -21,6 +21,3 @@ MonoBehaviour:
   heldSpellVFX: {fileID: 0}
   hitVFX: {fileID: 0}
   hitSFX: {fileID: 0}
-  targets: {fileID: 11500000, guid: db80dcdbb169c3e4d990838d60cae68f, type: 3}
-  effects:
-  - {fileID: 11500000, guid: 6af59fcbdf054d599aa232656f2c3d51, type: 3}
