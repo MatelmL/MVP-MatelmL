@@ -124,8 +124,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8999910374228588104}
         m_TargetAssemblyTypeName: Spells.SpellController, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
+        m_MethodName: OnFinishDrawing
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

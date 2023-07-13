@@ -16,8 +16,6 @@ namespace Spells
         public GameObject heldSpellVFX;
         public GameObject hitVFX;
         public GameObject hitSFX;
-        public MonoScript targets;
-        public MonoScript[] effects;
 
         public class Instance
         {
@@ -45,11 +43,6 @@ namespace Spells
         private void InstantiateProjectile(Instance instance, Transform parent)
         {
             instance.proyectile = Instantiate(proyectile, parent: parent);
-            instance.proyectile.AddComponent(targets.GetClass());
-            foreach (var effect in effects) 
-            {
-                instance.proyectile.AddComponent(effect.GetClass());   
-            }
             instance.proyectile.GetComponent<Proyectile>().Init(proyectileSpeed, instance);
             instance.proyectile.SetActive(false);
         }
