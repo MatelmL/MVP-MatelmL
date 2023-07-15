@@ -3265,6 +3265,8 @@ GameObject:
   - component: {fileID: 3642132683619153015}
   - component: {fileID: 7887393943790299585}
   - component: {fileID: 1851110657983794591}
+  - component: {fileID: 1940493523}
+  - component: {fileID: 3562107273096391091}
   m_Layer: 0
   m_Name: Gobling
   m_TagString: Untagged
@@ -3549,7 +3551,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baeae142f116cc04c99926ff577612e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 2473842268673910532}
 --- !u!114 &7887393943790299585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3572,5 +3573,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8dd2651afa0c2b243bffe8af042eb8cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1940493523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9223132444946474948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 664fc34f7e303784bad1de0e071a7ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3562107273096391091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9223132444946474948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6058e3300b503264998ece9cb173d9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

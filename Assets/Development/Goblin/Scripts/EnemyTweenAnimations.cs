@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyTweenAnimations : MonoBehaviour
 {
-    public void InvokeDie()
+    public void InvokeDie(float time)
     {
-        Invoke("Die", 2f);
+        Invoke("Die", time);
     }
     private void Die()
     {
