@@ -1,63 +1,62 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.AI;
-using System.IO;
-using Goblin;
-using GrayBoxing;
 
-public class EnemyMovement : MonoBehaviour
+namespace Goblin
 {
-    private NavMeshAgent navMeshAgent;
-
-    public UnityEvent OnEnemyAttack;
-
-    private Queue<Transform> path;
-
-    private EnemyState state;
-    private void Awake()
+    public class EnemyMovement : MonoBehaviour
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        state = GetComponent<EnemyState>();
-    }
-    
-    public void Initialize()
-    {
-        path = Paths.Instance.GetRandomPath();
-        NextWaypoint();
-    }
+        private NavMeshAgent navMeshAgent;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(state.currentState != GoblinState.Moving) return;
-        if (GameManager.Instance.lose) return;
-        if (other.CompareTag("Waypoint"))
+        public UnityEvent OnEnemyAttack;
+
+        private Queue<Transform> path;
+
+        private EnemyState state;
+        private void Awake()
         {
-            if (navMeshAgent.destination == other.transform.position)
+            navMeshAgent = GetComponent<NavMeshAgent>();
+            state = GetComponent<EnemyState>();
+        }
+
+        public void Initialize()
+        {
+            path = Paths.Instance.GetRandomPath();
             NextWaypoint();
         }
-        else if (other.CompareTag("Door"))
-        {
-            OnEnemyAttack.Invoke();
-        }
-    }
-    void NextWaypoint()
-    {
 
-        if(path.Count > 0)
+        private void OnTriggerEnter(Collider other)
         {
-            navMeshAgent.SetDestination(path.Dequeue().position);
+            if (state.currentState != GoblinState.Moving) return;
+            if (GameManager.Instance.lose) return;
+            if (other.CompareTag("Waypoint"))
+            {
+                if (navMeshAgent.destination == other.transform.position)
+                    NextWaypoint();
+            }
+            else if (other.CompareTag("Door"))
+            {
+                OnEnemyAttack.Invoke();
+            }
         }
-        else
+        void NextWaypoint()
         {
-            navMeshAgent.SetDestination(Paths.Instance.DoorPosition.position);
+
+            if (path.Count > 0)
+            {
+                navMeshAgent.SetDestination(path.Dequeue().position);
+            }
+            else
+            {
+                navMeshAgent.SetDestination(Paths.Instance.DoorPosition.position);
+            }
         }
-    }
 
-    void Lose()
-    {
-        navMeshAgent.SetDestination(Paths.Instance.DefeatPosition.position);
-    }
+        void Lose()
+        {
+            navMeshAgent.SetDestination(Paths.Instance.DefeatPosition.position);
+        }
 
+    }
 }
