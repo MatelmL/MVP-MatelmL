@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyTweenAnimations : MonoBehaviour
@@ -10,11 +8,12 @@ public class EnemyTweenAnimations : MonoBehaviour
     }
     private void Die()
     {
+        transform.LeanScale(Vector3.zero, 1f).setOnComplete(ReturnEnemy);
+    }
 
-        transform.LeanScale(Vector3.zero, 1f)
-            .setOnComplete(
-            () => Debug.Log("Se Murio")
-                //devolver al pool
-            );
+    private void ReturnEnemy()
+    {
+        EnemyPool.Instance.ReturnEnemy(gameObject);
+        WaveManager.Instance.EnemieDie();
     }
 }
