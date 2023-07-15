@@ -22,5 +22,13 @@ namespace Goblin
                 rigidbody.isKinematic = isKinematic;
             }
         }
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                GetComponent<Animator>().enabled = false;
+                SetEnabled(true);
+            }
+        }
     }
 }
