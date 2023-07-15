@@ -3,12 +3,23 @@ using UnityEngine;
 
 public class Paths : MonoBehaviour
 {
+    //singleton
+    public static Paths Instance;
     [SerializeField] List<List<Transform>> paths;
     public Transform DoorPosition;
     public Transform DefeatPosition;
 
-    public void Start()
+    public void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Debug.LogError("Paths already exists");
+        }
+
         foreach (List<Transform> path in paths)
         {
             path.Add(DoorPosition);
