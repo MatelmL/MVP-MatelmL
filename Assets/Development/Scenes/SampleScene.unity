@@ -343,71 +343,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4306841389959627412, guid: 63a66569e493c354ea174f6c26454608,
-        type: 3}
-      propertyPath: OnEnemyAttack.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306841389959627412, guid: 63a66569e493c354ea174f6c26454608,
-        type: 3}
-      propertyPath: OnEnemyAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306841389959627412, guid: 63a66569e493c354ea174f6c26454608,
-        type: 3}
-      propertyPath: OnEnemyAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1940493527}
-    - target: {fileID: 4306841389959627412, guid: 63a66569e493c354ea174f6c26454608,
-        type: 3}
-      propertyPath: OnEnemyAttack.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306841389959627412, guid: 63a66569e493c354ea174f6c26454608,
-        type: 3}
-      propertyPath: OnEnemyAttack.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartAattacking
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306841389959627412, guid: 63a66569e493c354ea174f6c26454608,
-        type: 3}
-      propertyPath: OnEnemyAttack.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Goblin.EnemyState, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306841389959627412, guid: 63a66569e493c354ea174f6c26454608,
-        type: 3}
-      propertyPath: OnEnemyAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824759474825947103, guid: 63a66569e493c354ea174f6c26454608,
-        type: 3}
-      propertyPath: onDieStart.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824759474825947103, guid: 63a66569e493c354ea174f6c26454608,
-        type: 3}
-      propertyPath: onDieStart.m_PersistentCalls.m_Calls.Array.data[3].m_Target
-      value: 
-      objectReference: {fileID: 1940493523}
-    - target: {fileID: 7824759474825947103, guid: 63a66569e493c354ea174f6c26454608,
-        type: 3}
-      propertyPath: onDieStart.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: InvokeDie
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824759474825947103, guid: 63a66569e493c354ea174f6c26454608,
-        type: 3}
-      propertyPath: onDieStart.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
-      value: EnemyTweenAnimations, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824759474825947103, guid: 63a66569e493c354ea174f6c26454608,
-        type: 3}
-      propertyPath: onDieStart.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_FloatArgument
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7824759474825947103, guid: 63a66569e493c354ea174f6c26454608,
-        type: 3}
-      propertyPath: onDieStart.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 8409617688096832894, guid: 63a66569e493c354ea174f6c26454608,
         type: 3}
       propertyPath: m_RootOrder
@@ -470,30 +405,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63a66569e493c354ea174f6c26454608, type: 3}
---- !u!114 &1940493523 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1940493523, guid: 63a66569e493c354ea174f6c26454608,
-    type: 3}
-  m_PrefabInstance: {fileID: 1801816298}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 664fc34f7e303784bad1de0e071a7ca8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1940493527 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7824759474825947103, guid: 63a66569e493c354ea174f6c26454608,
-    type: 3}
-  m_PrefabInstance: {fileID: 1801816298}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4de59f4ad03489c47aad17417ac8e262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8304162475745560804
 PrefabInstance:
   m_ObjectHideFlags: 0

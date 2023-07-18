@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,14 @@ namespace Goblin
     {
         private Rigidbody[] rigidbodies;
 
-        void Start()
+        private void Awake()
         {
             rigidbodies = transform.GetComponentsInChildren<Rigidbody>();
             SetEnabled(false);
+
         }
+
+
 
         public void SetEnabled(bool enabled)
         {

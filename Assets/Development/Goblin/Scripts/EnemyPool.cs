@@ -11,7 +11,7 @@ public class EnemyPool : MonoBehaviour
 
     [SerializeField] private int poolSize = 11;
 
-    public Queue<GameObject> enemies;
+    public Queue<GameObject> enemies = new();
     private void Awake()
     {
         Instance = this;

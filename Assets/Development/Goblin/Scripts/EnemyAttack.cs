@@ -8,9 +8,9 @@ namespace Goblin {
         public float damage = 10f;
 
         Door door;
-        private void Awake()
+        private void Start()
         {
-            door = Paths.Instance.DoorPosition.GetComponent<Door>();
+            door = Paths.Instance.DoorPosition.gameObject.GetComponent<Door>();
         }
 
         //llamar desde la animacion

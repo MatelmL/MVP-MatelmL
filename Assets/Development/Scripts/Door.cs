@@ -9,6 +9,11 @@ public class Door : MonoBehaviour,ITakeDamage,IReset
     public float maxHealth;
     public float health { get ; set; }
 
+    private void Start()
+    {
+        ResetLife();
+    }
+
     public void ResetLife()
     {
         health = maxHealth;
