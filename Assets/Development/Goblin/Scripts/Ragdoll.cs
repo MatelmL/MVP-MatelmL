@@ -27,7 +27,7 @@ namespace Goblin
             for (int i = 0; i < rigidbodies.Length; i++)
             {
                 rigidbodies[i].isKinematic = isKinematic;
-                colliders[i].enabled = enabled;
+                colliders[i+1].enabled = enabled;
             }
         }
         private void Update()
