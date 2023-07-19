@@ -1,27 +1,33 @@
 using UnityEngine;
-using UnityEngine.Events;
-using System;
 
 public class GameManager : MonoBehaviour
 {
-    public UnityEvent StartGameUE;
+    //singleton
+    public static GameManager Instance;
 
-    //solo esta para testear, hay que sacar esto...
-    private void Update()
+    public Door door;
+
+    public bool lose = false;
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.P)) StartGameUE?.Invoke();    
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        Door.OnDoorDie += () => lose = true;
     }
 
-    public void Die()
+    public void RestartGame()
     {
-        Debug.Log("Eh Morido");
+        lose = false;
+        RestartDoor();
+
+        //startgoblng
     }
-    public void TakeDamage(float currentLife)
+
+    private void RestartDoor()
     {
-        Debug.Log("Mi vida en este preciso momento es " + currentLife);
-    }
-    public void SpecialNumber(float specialNumber)
-    {
-        Debug.Log("El verdadero numero " + specialNumber);
+        door.gameObject.SetActive(true);
+        door.ResetLife();
     }
 }
