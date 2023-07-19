@@ -31,9 +31,13 @@ public class MovementRecognizer : MonoBehaviour
     private List<Vector3> positionsList = new List<Vector3>();
     private int strokeID = 0;
 
+    private bool canDraw;
+    [SerializeField] float drawCooldown = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
+        canDraw = true;
         TextAsset[] gesturesXml = Resources.LoadAll<TextAsset>("Gestures/");
         foreach (TextAsset gestureXml in gesturesXml)
             trainingSet.Add(GestureIO.ReadGestureFromXML(gestureXml.text));
@@ -47,9 +51,15 @@ public class MovementRecognizer : MonoBehaviour
 
         if (SpellController.instance.heldSpell != null)
         {
-            if (isPressed) SpellController.instance.Shoot();
+            if (isPressed)
+            {
+                SpellController.instance.Shoot();
+                canDraw = false;
+                Invoke("EnableDrawing", drawCooldown);
+            }
             return;
         }
+        if (!canDraw) return;
         //Start The Movement
         if (!isMoving && isPressed)
         {
@@ -74,6 +84,10 @@ public class MovementRecognizer : MonoBehaviour
             timer = 0;
             UpdateMovement();
         }
+    }
+    void EnableDrawing()
+    {
+        canDraw = true;
     }
 
     void StartMovement()

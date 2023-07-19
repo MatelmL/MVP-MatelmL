@@ -8,7 +8,7 @@ namespace Spells
         public override void Apply(Collider target)
         {
             // TODO: Move this to an interface IKnockback?
-            disableNavmesh(target);
+            //disableNavmesh(target);
             addForce(target);
             chainReacion(target);
         }
@@ -24,7 +24,7 @@ namespace Spells
         {
             Rigidbody rb = target.GetComponent<Rigidbody>();
             if (rb == null) return;
-            rb.isKinematic = false;
+            //rb.isKinematic = false;
             rb.AddExplosionForce(spellData.knockback, spellData.proyectile.transform.position, spellData.radius);
         }
 

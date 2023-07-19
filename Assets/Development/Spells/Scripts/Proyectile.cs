@@ -54,7 +54,7 @@ namespace Spells
         private void OnCollisionEnter(Collision other)
         {
             Effects(other);
-            ReturnToQueue();
+            //ReturnToQueue();
         }
 
         private void Effects(Collision other)
@@ -82,7 +82,7 @@ namespace Spells
             if (hitVFX)
             {
                 hitVFX.Play();
-                yield return new WaitForSeconds(hitVFX.main.duration);
+                yield return new WaitForSeconds(hitVFX.main.duration + 1f);
                 hitVFX.Stop();
             } 
             ReturnToQueue();

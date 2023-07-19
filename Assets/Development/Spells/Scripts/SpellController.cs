@@ -22,11 +22,6 @@ namespace Spells
             EnableSpellVFX();
         }
 
-        private void Start()
-        {
-            heldSpell = SpellList.instance.GetSpell("fireball");
-        }
-
         private void EnableSpellVFX()
         {
             if (heldSpell.heldSpellVFX == null) return; 
@@ -42,7 +37,7 @@ namespace Spells
             heldSpell.proyectile.transform.position = wandTip.transform.position;
             heldSpell.proyectile.transform.rotation = wandTip.transform.rotation;
             heldSpell.proyectile.SetActive(true);
-            // heldSpell = null;
+            heldSpell = null;
         }
 
         private void DisableSpellVFX()
