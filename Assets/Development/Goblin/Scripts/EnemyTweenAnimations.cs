@@ -1,3 +1,4 @@
+using Goblin;
 using UnityEngine;
 
 public class EnemyTweenAnimations : MonoBehaviour
@@ -8,7 +9,8 @@ public class EnemyTweenAnimations : MonoBehaviour
     }
     private void Die()
     {
-        transform.LeanScale(Vector3.zero, 1f).setOnComplete(ReturnEnemy);
+        //GetComponent<Ragdoll>().SetEnabled(false);
+        transform.GetChild(1).LeanScale(Vector3.zero, 1f).setOnComplete(ReturnEnemy);
     }
 
     private void ReturnEnemy()
