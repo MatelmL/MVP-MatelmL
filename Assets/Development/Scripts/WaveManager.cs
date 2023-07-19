@@ -62,7 +62,7 @@ public class WaveManager : MonoBehaviour
     public void EnemieDie()
     {
         enemiesAlive--;
-        if(enemiesAlive <= 0)
+        if(enemiesAlive == 0)
         {
             WaveClear();
         }
