@@ -25,6 +25,7 @@ public class WaveManager : MonoBehaviour
         Instance = this;
         wave = 1;
         spawners = FindObjectsOfType<EnemySpawner>();
+        StartWave();
     }
     public void StartWave()
     {

@@ -14,6 +14,8 @@ namespace Goblin
         private Queue<Transform> path;
 
         private EnemyState state;
+
+        private Transform destination;
         private void Awake()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
@@ -23,6 +25,7 @@ namespace Goblin
         public void Initialize()
         {
             path = Paths.Instance.GetRandomPath();
+            GetComponent<Collider>().enabled = true;
             NextWaypoint();
         }
 
@@ -32,12 +35,13 @@ namespace Goblin
             if (GameManager.Instance.lose) return;
             if (other.CompareTag("Waypoint"))
             {
-                if (navMeshAgent.destination == other.transform.position)
+                if (destination.position == other.transform.position)
                     NextWaypoint();
             }
             else if (other.CompareTag("Door"))
             {
                 OnEnemyAttack.Invoke();
+                navMeshAgent.Stop();
             }
         }
         void NextWaypoint()
@@ -45,7 +49,8 @@ namespace Goblin
 
             if (path.Count > 0)
             {
-                navMeshAgent.SetDestination(path.Dequeue().position);
+                destination = path.Dequeue();
+                navMeshAgent.SetDestination(destination.position);
             }
             else
             {

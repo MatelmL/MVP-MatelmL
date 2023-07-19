@@ -5,7 +5,7 @@ public class Paths : MonoBehaviour
 {
     //singleton
     public static Paths Instance;
-    [SerializeField] List<List<Transform>> paths;
+    [SerializeField] List<PathScript> paths;
     public Transform DoorPosition;
     public Transform DefeatPosition;
 
@@ -20,10 +20,10 @@ public class Paths : MonoBehaviour
             Debug.LogError("Paths already exists");
         }
 
-        foreach (List<Transform> path in paths)
+        foreach (PathScript pathScript in paths)
         {
-            path.Add(DoorPosition);
-            path.Add(DefeatPosition);
+            pathScript.path.Add(DoorPosition);
+            pathScript.path.Add(DefeatPosition);
         }
     }
 
@@ -34,6 +34,6 @@ public class Paths : MonoBehaviour
             Debug.LogError("No paths set");
             return null;
         }
-        return new Queue<Transform>(paths[Random.Range(0, paths.Count)]);
+        return new Queue<Transform>(paths[Random.Range(0, paths.Count)].path);
     }
 }

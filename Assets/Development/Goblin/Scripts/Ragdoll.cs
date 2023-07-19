@@ -8,10 +8,12 @@ namespace Goblin
     public class Ragdoll : MonoBehaviour
     {
         private Rigidbody[] rigidbodies;
+        private Collider[] colliders;
 
         private void Awake()
         {
             rigidbodies = transform.GetComponentsInChildren<Rigidbody>();
+            colliders = transform.GetComponentsInChildren<Collider>();
             SetEnabled(false);
 
         }
@@ -21,9 +23,11 @@ namespace Goblin
         public void SetEnabled(bool enabled)
         {
             bool isKinematic = !enabled;
-            foreach (Rigidbody rigidbody in rigidbodies)
+
+            for (int i = 0; i < rigidbodies.Length; i++)
             {
-                rigidbody.isKinematic = isKinematic;
+                rigidbodies[i].isKinematic = isKinematic;
+                colliders[i].enabled = enabled;
             }
         }
         private void Update()
