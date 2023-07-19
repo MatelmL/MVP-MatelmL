@@ -10,11 +10,20 @@ namespace Spells
         public SOSpell.Instance heldSpell;
         [HideInInspector] public GameObject heldSpellVFX;
         public static SpellController instance;
+
+        public bool debug = false;
         private void Awake()
         {
             if (instance == null) instance = this;
             else Destroy(this);
         }
+
+
+        private void Start()
+        {
+            if (debug) heldSpell = SpellList.instance.GetSpell("fireball");
+        }
+
         public void OnFinishDrawing(string SpellName)
         {
             Debug.Log("Casted" + SpellName);
@@ -37,7 +46,7 @@ namespace Spells
             heldSpell.proyectile.transform.position = wandTip.transform.position;
             heldSpell.proyectile.transform.rotation = wandTip.transform.rotation;
             heldSpell.proyectile.SetActive(true);
-            heldSpell = null;
+            if (!debug) heldSpell = null;
         }
 
         private void DisableSpellVFX()

@@ -54,7 +54,6 @@ namespace Spells
         private void OnCollisionEnter(Collision other)
         {
             Effects(other);
-            //ReturnToQueue();
         }
 
         private void Effects(Collision other)
@@ -64,6 +63,7 @@ namespace Spells
             {
                 foreach (var effect in effects)
                 {
+                    Debug.Log(effect.GetType());
                     effect.Apply(hit);
                 }
             }

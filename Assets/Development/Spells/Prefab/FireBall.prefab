@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 8845959546052692004}
   - component: {fileID: 2133588214285719801}
   - component: {fileID: 6494136892360560407}
-  - component: {fileID: 694996090730891904}
   - component: {fileID: 3322454478531873190}
+  - component: {fileID: 694996090730891904}
   - component: {fileID: 7958111687989126861}
   m_Layer: 0
   m_Name: FireBall
@@ -134,19 +134,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 5
   hitVFX: {fileID: 5441902721195514706}
---- !u!114 &694996090730891904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5911144701262280291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 840459e453b54c8ea5494daa6f8b1492, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spellData: {fileID: 0}
 --- !u!114 &3322454478531873190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +144,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6af59fcbdf054d599aa232656f2c3d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellData: {fileID: 0}
+--- !u!114 &694996090730891904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5911144701262280291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840459e453b54c8ea5494daa6f8b1492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spellData: {fileID: 0}

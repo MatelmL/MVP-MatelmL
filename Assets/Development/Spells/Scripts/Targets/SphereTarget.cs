@@ -6,7 +6,7 @@ namespace Spells
     {
         public override Collider[] GetTargets(Collision other)
         {
-            return Physics.OverlapSphere(other.GetContact(0).point, 100f);
+            return Physics.OverlapSphere(other.GetContact(0).point, spellData.radius);
         }
     }
 }
