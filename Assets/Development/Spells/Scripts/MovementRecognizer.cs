@@ -34,11 +34,13 @@ public class MovementRecognizer : MonoBehaviour
     private bool canDraw;
     [SerializeField] float drawCooldown = 1f;
 
-    [SerializeField] LineRenderer lineRenderer;
+    [SerializeField] LineRenderer drawLineRenderer;
+    LineDrawer aimLineRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
+        aimLineRenderer = movementSource.GetComponent<LineDrawer>();
         canDraw = true;
         TextAsset[] gesturesXml = Resources.LoadAll<TextAsset>("Gestures/");
         foreach (TextAsset gestureXml in gesturesXml)
@@ -57,6 +59,7 @@ public class MovementRecognizer : MonoBehaviour
             {
                 SpellController.instance.Shoot();
                 canDraw = false;
+                aimLineRenderer.EnableLine(false);
                 Invoke("EnableDrawing", drawCooldown);
             }
             return;
@@ -102,9 +105,9 @@ public class MovementRecognizer : MonoBehaviour
         if (debugCubePrefab)
             Destroy(Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity), 3);
 
-        lineRenderer.enabled = true;
-        lineRenderer.positionCount = 1;
-        lineRenderer.SetPosition(lineRenderer.positionCount - 1, movementSource.position);
+        drawLineRenderer.enabled = true;
+        drawLineRenderer.positionCount = 1;
+        drawLineRenderer.SetPosition(drawLineRenderer.positionCount - 1, movementSource.position);
     }
 
     void EndMovement()
@@ -142,14 +145,15 @@ public class MovementRecognizer : MonoBehaviour
             if (result.Score > recognitionThreshold)
             {
                 OnRecognized.Invoke(result.GestureClass);
+                aimLineRenderer.EnableLine(true);
             }
         }
     }
 
     private void ResetLineRenderer()
     {
-        lineRenderer.positionCount = 0;
-        lineRenderer.enabled = false;
+        drawLineRenderer.positionCount = 0;
+        drawLineRenderer.enabled = false;
     }
 
     void UpdateMovement()
@@ -163,8 +167,8 @@ public class MovementRecognizer : MonoBehaviour
             if (debugCubePrefab)
                 Destroy(Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity), 3);
 
-            lineRenderer.positionCount++;
-            lineRenderer.SetPosition(lineRenderer.positionCount - 1, movementSource.position);
+            drawLineRenderer.positionCount++;
+            drawLineRenderer.SetPosition(drawLineRenderer.positionCount - 1, movementSource.position);
         }
     }
 }
