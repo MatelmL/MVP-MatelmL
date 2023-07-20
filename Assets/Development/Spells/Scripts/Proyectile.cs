@@ -82,7 +82,7 @@ namespace Spells
             if (hitVFX)
             {
                 hitVFX.Play();
-                yield return new WaitForSeconds(hitVFX.main.duration + 1f);
+                yield return new WaitForSeconds(hitVFX.main.startLifetime.constant);
                 hitVFX.Stop();
             } 
             ReturnToQueue();

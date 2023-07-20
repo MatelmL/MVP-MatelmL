@@ -2690,10 +2690,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 100.459
       objectReference: {fileID: 0}
+    - target: {fileID: 3993019108384308888, guid: 6c7830cd1a81cc14a8bc1c4a58e5950f,
+        type: 3}
+      propertyPath: SpellQueueSize
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3993019108384308895, guid: 6c7830cd1a81cc14a8bc1c4a58e5950f,
         type: 3}
       propertyPath: debug
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3993019109748432714, guid: 6c7830cd1a81cc14a8bc1c4a58e5950f,
         type: 3}
