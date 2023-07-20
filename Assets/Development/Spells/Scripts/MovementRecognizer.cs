@@ -34,6 +34,8 @@ public class MovementRecognizer : MonoBehaviour
     private bool canDraw;
     [SerializeField] float drawCooldown = 1f;
 
+    [SerializeField] LineRenderer lineRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -99,12 +101,18 @@ public class MovementRecognizer : MonoBehaviour
 
         if (debugCubePrefab)
             Destroy(Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity), 3);
+
+        lineRenderer.enabled = true;
+        lineRenderer.positionCount = 1;
+        lineRenderer.SetPosition(lineRenderer.positionCount - 1, movementSource.position);
     }
 
     void EndMovement()
     {
         Debug.Log("End Movement");
         isMoving = false;
+
+        ResetLineRenderer();
 
         //Create The Gesture FRom The Position List
         Point[] pointArray = new Point[positionsList.Count];
@@ -138,6 +146,12 @@ public class MovementRecognizer : MonoBehaviour
         }
     }
 
+    private void ResetLineRenderer()
+    {
+        lineRenderer.positionCount = 0;
+        lineRenderer.enabled = false;
+    }
+
     void UpdateMovement()
     {
         //Debug.Log("Update Movement");
@@ -148,6 +162,9 @@ public class MovementRecognizer : MonoBehaviour
             positionsList.Add(movementSource.position);
             if (debugCubePrefab)
                 Destroy(Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity), 3);
+
+            lineRenderer.positionCount++;
+            lineRenderer.SetPosition(lineRenderer.positionCount - 1, movementSource.position);
         }
     }
 }
