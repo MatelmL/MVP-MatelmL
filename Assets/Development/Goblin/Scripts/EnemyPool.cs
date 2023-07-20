@@ -18,7 +18,7 @@ public class EnemyPool : MonoBehaviour
 
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject gobling = Instantiate(GoblingPrefab);
+            GameObject gobling = Instantiate(GoblingPrefab, transform);
             gobling.SetActive(false);
             enemies.Enqueue(gobling);
         }

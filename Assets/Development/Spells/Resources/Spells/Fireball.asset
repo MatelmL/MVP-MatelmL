@@ -15,9 +15,9 @@ MonoBehaviour:
   name: fireball
   proyectile: {fileID: 5911144701262280291, guid: 4a8a3d9cc8110b3449b3db5e95c532b8,
     type: 3}
-  proyectileSpeed: 10
-  radius: 5
-  knockback: 10
+  proyectileSpeed: 20
+  radius: 10
+  knockback: 150
   heldSpellVFX: {fileID: 0}
   hitVFX: {fileID: 0}
   hitSFX: {fileID: 0}

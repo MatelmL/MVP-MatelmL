@@ -42,6 +42,7 @@ namespace Goblin
             {
                 OnEnemyAttack.Invoke();
                 navMeshAgent.Stop();
+                gameObject.transform.LookAt(other.transform.position);
             }
         }
         void NextWaypoint()
