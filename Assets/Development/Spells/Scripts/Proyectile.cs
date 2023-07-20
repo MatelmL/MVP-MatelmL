@@ -13,6 +13,7 @@ namespace Spells
         private SOSpell.Instance spell; // Spell object this projectile belongs to. 
         public float lifetime = 5f;
         public ParticleSystem hitVFX;
+        public ParticleSystem spellVFX;
         private Rigidbody rb;
         private float speed;
 
@@ -27,6 +28,7 @@ namespace Spells
             targets = GetComponent<Targets>();
             effects = GetComponents<Effect>();
             SetSpell(spell);
+            spellVFX.Play();
             gameObject.SetActive(false);
         }
 
@@ -67,7 +69,7 @@ namespace Spells
                     effect.Apply(hit);
                 }
             }
-
+            spellVFX.Stop();
             StartCoroutine(StartVfx());
         }
 
