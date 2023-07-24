@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Door : MonoBehaviour,ITakeDamage,IReset
 {
 
     public static Action OnDoorDie;
+    public UnityEvent<float, float> OnDamageTaken;
 
     public float maxHealth;
     public float health { get ; set; }
@@ -21,11 +23,13 @@ public class Door : MonoBehaviour,ITakeDamage,IReset
 
     public void TakeDamage(float damageAmount)
     {
-        health-= damageAmount;
-        if(health <= 0)
+        health -= damageAmount;
+        OnDamageTaken?.Invoke(health, maxHealth);
+
+        if (health <= 0)
         {
             OnDoorDie?.Invoke();
             gameObject.SetActive(false);
-        }
+        }  
     }
 }
