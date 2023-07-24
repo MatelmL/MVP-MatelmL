@@ -6,8 +6,8 @@ namespace Goblin {
     public class EnemyAttack : MonoBehaviour
     {
         public float damage = 10f;
-
         Door door;
+
         private void Start()
         {
             door = Paths.Instance.DoorPosition.gameObject.GetComponent<Door>();
