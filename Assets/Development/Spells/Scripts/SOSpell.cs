@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,8 +16,6 @@ namespace Spells
         public GameObject heldSpellVFX;
         public GameObject hitVFX;
         public GameObject hitSFX;
-        public MonoScript targets;
-        public MonoScript[] effects;
 
         public class Instance
         {
@@ -26,29 +25,24 @@ namespace Spells
             public GameObject hitVFX;
             public GameObject hitSFX;
         }
-        public Instance GetInstance()
+        public Instance GetInstance(Transform parent)
         {
             Instance instance = new Instance();
             instance.spellData = this;
-            InstantiateVFX(instance);
-            InstantiateProjectile(instance);
+            InstantiateVFX(instance, parent);
+            InstantiateProjectile(instance, parent);
             return instance;
         }
 
-        private void InstantiateVFX(Instance instance)
+        private void InstantiateVFX(Instance instance, Transform parent)
         {
             if (heldSpellVFX == null) return;
-            instance.heldSpellVFX = Instantiate(heldSpellVFX);
+            instance.heldSpellVFX = Instantiate(heldSpellVFX, parent: parent);
         }
 
-        private void InstantiateProjectile(Instance instance)
+        private void InstantiateProjectile(Instance instance, Transform parent)
         {
-            instance.proyectile = Instantiate(proyectile);
-            instance.proyectile.AddComponent(targets.GetType());
-            foreach (var effect in effects)
-            {
-                instance.proyectile.AddComponent(effect.GetType());   
-            }
+            instance.proyectile = Instantiate(proyectile, parent: parent);
             instance.proyectile.GetComponent<Proyectile>().Init(proyectileSpeed, instance);
             instance.proyectile.SetActive(false);
         }

@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PDollarGestureRecognizer;
 using System.IO;
+using Spells;
 using UnityEngine.Events;
 
 public class MovementRecognizer : MonoBehaviour
@@ -29,9 +31,17 @@ public class MovementRecognizer : MonoBehaviour
     private List<Vector3> positionsList = new List<Vector3>();
     private int strokeID = 0;
 
+    private bool canDraw;
+    [SerializeField] float drawCooldown = 1f;
+
+    [SerializeField] LineRenderer drawLineRenderer;
+    LineDrawer aimLineRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
+        aimLineRenderer = movementSource.GetComponent<LineDrawer>();
+        canDraw = true;
         TextAsset[] gesturesXml = Resources.LoadAll<TextAsset>("Gestures/");
         foreach (TextAsset gestureXml in gesturesXml)
             trainingSet.Add(GestureIO.ReadGestureFromXML(gestureXml.text));
@@ -42,6 +52,19 @@ public class MovementRecognizer : MonoBehaviour
     {
         if (Time.timeScale == 0f) return;
         bool isPressed = Input.GetAxis("RightControllerTrigger") > inputThreshold;
+
+        if (SpellController.instance.heldSpell != null)
+        {
+            if (isPressed)
+            {
+                SpellController.instance.Shoot();
+                canDraw = false;
+                aimLineRenderer.EnableLine(false);
+                Invoke("EnableDrawing", drawCooldown);
+            }
+            return;
+        }
+        if (!canDraw) return;
         //Start The Movement
         if (!isMoving && isPressed)
         {
@@ -67,6 +90,10 @@ public class MovementRecognizer : MonoBehaviour
             UpdateMovement();
         }
     }
+    void EnableDrawing()
+    {
+        canDraw = true;
+    }
 
     void StartMovement()
     {
@@ -77,12 +104,18 @@ public class MovementRecognizer : MonoBehaviour
 
         if (debugCubePrefab)
             Destroy(Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity), 3);
+
+        drawLineRenderer.enabled = true;
+        drawLineRenderer.positionCount = 1;
+        drawLineRenderer.SetPosition(drawLineRenderer.positionCount - 1, movementSource.position);
     }
 
     void EndMovement()
     {
         Debug.Log("End Movement");
         isMoving = false;
+
+        ResetLineRenderer();
 
         //Create The Gesture FRom The Position List
         Point[] pointArray = new Point[positionsList.Count];
@@ -101,7 +134,7 @@ public class MovementRecognizer : MonoBehaviour
             newGesture.Name = newGestureName;
             trainingSet.Add(newGesture);
 
-            string fileName = Application.persistentDataPath + "/" + newGestureName + ".xml";
+            string fileName = Application.persistentDataPath + "/" + newGestureName + "-" + DateTime.Now.ToFileTime() + ".xml";
             GestureIO.WriteGesture(pointArray, newGestureName, fileName);
         }
         //recognize
@@ -112,8 +145,15 @@ public class MovementRecognizer : MonoBehaviour
             if (result.Score > recognitionThreshold)
             {
                 OnRecognized.Invoke(result.GestureClass);
+                aimLineRenderer.EnableLine(true);
             }
         }
+    }
+
+    private void ResetLineRenderer()
+    {
+        drawLineRenderer.positionCount = 0;
+        drawLineRenderer.enabled = false;
     }
 
     void UpdateMovement()
@@ -126,6 +166,9 @@ public class MovementRecognizer : MonoBehaviour
             positionsList.Add(movementSource.position);
             if (debugCubePrefab)
                 Destroy(Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity), 3);
+
+            drawLineRenderer.positionCount++;
+            drawLineRenderer.SetPosition(drawLineRenderer.positionCount - 1, movementSource.position);
         }
     }
 }

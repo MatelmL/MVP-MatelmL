@@ -6,9 +6,10 @@ namespace Spells
     {
         public override void Apply(Collider target)
         {
-            //ITakeDamage health = enemy.GetComponent<ITakeDamage>();
-            //if (health == null) return;
-            //health.TakeDamage(1);
+            Debug.Log("DealDamage: " + target.gameObject);
+            ITakeDamage health = target.GetComponent<ITakeDamage>();
+            if (health == null) return;
+            health.TakeDamage(1);
         }
     }
 }
