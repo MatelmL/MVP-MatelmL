@@ -781,8 +781,8 @@ MonoBehaviour:
   - {fileID: 483802608}
   - {fileID: 483802607}
   - {fileID: 483802606}
-  DoorPosition: {fileID: 543450653104693861}
-  DefeatPosition: {fileID: 543450653104693861}
+  DoorPosition: {fileID: 5825297751735316373}
+  DefeatPosition: {fileID: 5825297751735316373}
 --- !u!114 &483802603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3876,7 +3876,7 @@ PrefabInstance:
     - target: {fileID: 4778219537045689453, guid: 6ae01e5813aaaf64a8dc9806c0e126a2,
         type: 3}
       propertyPath: OnDamageTaken.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4778219537045689453, guid: 6ae01e5813aaaf64a8dc9806c0e126a2,
         type: 3}

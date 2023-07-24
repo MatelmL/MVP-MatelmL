@@ -6,7 +6,7 @@ public class Door : MonoBehaviour,ITakeDamage,IReset
 {
 
     public static Action OnDoorDie;
-    public UnityEvent<float> OnDamageTaken;
+    public UnityEvent<float, float> OnDamageTaken;
 
     public float maxHealth;
     public float health { get ; set; }
@@ -24,7 +24,7 @@ public class Door : MonoBehaviour,ITakeDamage,IReset
     public void TakeDamage(float damageAmount)
     {
         health -= damageAmount;
-        OnDamageTaken?.Invoke(health);
+        OnDamageTaken?.Invoke(health, maxHealth);
 
         if (health <= 0)
         {
