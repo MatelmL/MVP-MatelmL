@@ -16,6 +16,7 @@ namespace Spells
         public ParticleSystem spellVFX;
         private Rigidbody rb;
         private float speed;
+        [SerializeField] float timeToVFX;
 
         private void Awake()
         {
@@ -28,8 +29,13 @@ namespace Spells
             targets = GetComponent<Targets>();
             effects = GetComponents<Effect>();
             SetSpell(spell);
-            spellVFX.Play();
+            Invoke("StartVFX", timeToVFX);
             gameObject.SetActive(false);
+        }
+
+        private void StartVFX()
+        {
+            spellVFX.Play();
         }
 
         public void OnEnable()
@@ -56,6 +62,7 @@ namespace Spells
         private void OnCollisionEnter(Collision other)
         {
             Effects(other);
+            rb.velocity = Vector3.zero;
         }
 
         private void Effects(Collision other)

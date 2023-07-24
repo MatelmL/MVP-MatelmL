@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,12 +21,19 @@ public class WaveManager : MonoBehaviour
 
     public float timeBetweenEnemies = 1f;
 
+    public Action<int,int> OnWaveClear;
+
     private void Awake()
     {
         Instance = this;
         wave = 1;
         spawners = FindObjectsOfType<EnemySpawner>();
         StartWave();
+        
+    }
+    private void Start()
+    {
+        UpdateUI();
     }
     public void StartWave()
     {
@@ -42,14 +50,14 @@ public class WaveManager : MonoBehaviour
     {
         for (int i = 0; i < enemiesInWave; i++) {
             yield return new WaitForSeconds(timeBetweenEnemies);
-            spawners[Random.Range(0,spawners.Length)].Spawn();
+            spawners[UnityEngine.Random.Range(0,spawners.Length)].Spawn();
         }
     }
 
     public void WaveClear()
     {
         wave++;
-        if(wave % restWaves != 0) 
+        if (wave % restWaves != 0)
         {
             Invoke("StartWave", timeBetweenWaves);
         }
@@ -57,6 +65,13 @@ public class WaveManager : MonoBehaviour
         {
             //startGobling
         }
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
+        int nextRest = (int)Math.Ceiling((float)wave / restWaves);
+        OnWaveClear.Invoke(wave, restWaves * nextRest);
     }
 
     public void EnemieDie()

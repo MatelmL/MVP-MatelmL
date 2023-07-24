@@ -31,7 +31,13 @@ namespace Goblin
 
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log(other.tag);
             if (state.currentState != GoblinState.Moving) return;
+            if (other.CompareTag("DeadZone"))
+            {
+                Debug.Log("DeadZone");
+                EnemyPool.Instance.ReturnEnemy(gameObject);
+            }
             if (GameManager.Instance.lose) return;
             if (other.CompareTag("Waypoint"))
             {
@@ -44,6 +50,7 @@ namespace Goblin
                 navMeshAgent.Stop();
                 gameObject.transform.LookAt(other.transform.position);
             }
+            
         }
         void NextWaypoint()
         {
@@ -61,8 +68,17 @@ namespace Goblin
 
         void Lose()
         {
+            state.StartMoving();
+            navMeshAgent.Resume();
             navMeshAgent.SetDestination(Paths.Instance.DefeatPosition.position);
         }
-
+        private void OnEnable()
+        {
+            Door.OnDoorDie += Lose;
+        }
+        private void OnDisable()
+        {
+            Door.OnDoorDie -= Lose;
+        }
     }
 }
