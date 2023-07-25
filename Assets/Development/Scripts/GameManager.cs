@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public Door door;
 
     public bool lose = false;
+
+    [SerializeField] StartGobling startGobling;
     private void Awake()
     {
         if (Instance == null)
@@ -15,14 +17,20 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
         Door.OnDoorDie += () => lose = true;
+        RestartGame();
     }
 
     public void RestartGame()
     {
         lose = false;
         RestartDoor();
+        StartGobling();
+    }
 
-        //startgoblng
+    public void StartGobling()
+    {
+        startGobling.gameObject.SetActive(true);
+        startGobling.Init();
     }
 
     private void RestartDoor()

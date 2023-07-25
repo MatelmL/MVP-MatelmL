@@ -28,7 +28,7 @@ public class WaveManager : MonoBehaviour
         Instance = this;
         wave = 1;
         spawners = FindObjectsOfType<EnemySpawner>();
-        StartWave();
+        //StartWave();
         
     }
     private void Start()
@@ -63,7 +63,7 @@ public class WaveManager : MonoBehaviour
         }
         else
         {
-            //startGobling
+            GameManager.Instance.StartGobling();
         }
         UpdateUI();
     }
@@ -71,7 +71,7 @@ public class WaveManager : MonoBehaviour
     private void UpdateUI()
     {
         int nextRest = (int)Math.Ceiling((float)wave / restWaves);
-        OnWaveClear.Invoke(wave, restWaves * nextRest);
+        OnWaveClear?.Invoke(wave, restWaves * nextRest);
     }
 
     public void EnemieDie()

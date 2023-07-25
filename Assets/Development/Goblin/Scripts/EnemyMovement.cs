@@ -48,10 +48,16 @@ namespace Goblin
             {
                 OnEnemyAttack.Invoke();
                 navMeshAgent.Stop();
-                gameObject.transform.LookAt(other.transform.position);
+                LookAtDoor();
             }
-            
+
         }
+
+        public void LookAtDoor()
+        {
+            gameObject.transform.LookAt(Paths.Instance.DoorPosition.position);
+        }
+
         void NextWaypoint()
         {
 
