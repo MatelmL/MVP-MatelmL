@@ -39,7 +39,7 @@ namespace Spells
         IEnumerator Lifetime()
         {
             yield return new WaitForSeconds(lifetime);
-            if (!hitVFX.isPlaying) ReturnToQueue();
+            if (!spell.hitVFX.isPlaying) ReturnToQueue();
         }
         
 

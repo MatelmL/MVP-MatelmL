@@ -14,11 +14,9 @@ public class WaveManager : MonoBehaviour
     public EnemySpawner[] spawners;
 
     public int enemiesInWave;
-
     public int enemiesAlive;
 
     public float timeBetweenWaves = 10f;
-
     public float timeBetweenEnemies = 1f;
 
     public Action<int,int> OnWaveClear;
@@ -29,7 +27,6 @@ public class WaveManager : MonoBehaviour
         wave = 1;
         spawners = FindObjectsOfType<EnemySpawner>();
         //StartWave();
-        
     }
     private void Start()
     {
@@ -39,11 +36,8 @@ public class WaveManager : MonoBehaviour
     {
         //curva de dificultad
         enemiesInWave = 100 / (-wave - 11) + 11;
-
         enemiesAlive = enemiesInWave;
-
         StartCoroutine(Spawn());
-
     }
 
     IEnumerator Spawn()

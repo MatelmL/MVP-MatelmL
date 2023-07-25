@@ -9,8 +9,6 @@ namespace Spells
     [RequireComponent(typeof(Collider))]
     public abstract class SpellCarrier : MonoBehaviour
     {
-        public ParticleSystem hitVFX;
-
         protected  SOSpell.Instance spell; // Spell object this belongs to. 
         protected Targets targets;
         protected Effect[] effects;
@@ -51,11 +49,12 @@ namespace Spells
         
         protected IEnumerator StartHitVfx()
         {
-            if (hitVFX)
+            if (spell.hitVFX)
             {
-                hitVFX.Play();
-                yield return new WaitForSeconds(hitVFX.main.startLifetime.constant);
-                hitVFX.Stop();
+                spell.hitVFX.transform.position = transform.position;
+                spell.hitVFX.Play();
+                yield return new WaitForSeconds(spell.hitVFX.main.startLifetime.constant);
+                spell.hitVFX.Stop();
             } 
             OnHitVfxEnd();
         }
