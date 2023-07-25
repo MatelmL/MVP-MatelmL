@@ -124,6 +124,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5514191210562151382}
   - component: {fileID: 7962814350890104899}
+  - component: {fileID: 7450482944908711730}
+  - component: {fileID: 5913636505058288565}
   m_Layer: 0
   m_Name: ExplosiveBarrel
   m_TagString: Untagged
@@ -161,6 +163,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0171087, z: 1}
   m_Center: {x: 0, y: 0.5236093, z: 0}
+--- !u!114 &7450482944908711730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5173940102649559404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76011d973aeef8a49b1f00b849894e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5913636505058288565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5173940102649559404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726d35b2852e58e458ca9c55e84caef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileVFX: {fileID: 0}
+  hitVFX: {fileID: 0}
+  collider: {fileID: 0}
+  spellData: {fileID: 11400000, guid: 74c0c8a180ff0e343b4e76ee7d547756, type: 2}
 --- !u!1 &5679173863515009785
 GameObject:
   m_ObjectHideFlags: 0

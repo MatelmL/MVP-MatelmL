@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     public bool lose = false;
 
+    public static Action OnGameRestart;
     [SerializeField] StartGobling startGobling;
     private void Awake()
     {
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         lose = false;
+        OnGameRestart?.Invoke();
         RestartDoor();
         StartGobling();
     }
@@ -36,6 +39,6 @@ public class GameManager : MonoBehaviour
     private void RestartDoor()
     {
         door.gameObject.SetActive(true);
-        door.ResetLife();
+        door.Reset();
     }
 }

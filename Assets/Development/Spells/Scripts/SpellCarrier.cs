@@ -1,0 +1,64 @@
+using System;
+using System.Collections;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting.Dependencies.Sqlite;
+using UnityEngine;
+
+namespace Spells
+{
+    [RequireComponent(typeof(Collider))]
+    public abstract class SpellCarrier : MonoBehaviour
+    {
+        public ParticleSystem hitVFX;
+
+        protected  SOSpell.Instance spell; // Spell object this belongs to. 
+        protected Targets targets;
+        protected Effect[] effects;
+        
+        protected Collider collider;
+
+        private void Awake()
+        {
+            collider = GetComponent<Collider>();
+        }
+
+        protected void GetSpellComponents()
+        {
+            targets = GetComponent<Targets>();
+            effects = GetComponents<Effect>();
+        }
+        public void SetSpell(SOSpell.Instance spell)
+        {
+            this.spell = spell;
+            targets.spellData = spell.spellData;
+            foreach (var effect in effects)
+            {
+                effect.spellData = spell.spellData;
+            }
+        }
+        protected void ApplyEffects(Collider[] hits)
+        {
+            foreach (var hit in hits)
+            {
+                if (hit == collider) continue; // Ignore self.
+                foreach (var effect in effects)
+                {
+                    Debug.Log(effect.GetType());
+                    effect.Apply(hit);
+                }
+            }
+        }
+        
+        protected IEnumerator StartHitVfx()
+        {
+            if (hitVFX)
+            {
+                hitVFX.Play();
+                yield return new WaitForSeconds(hitVFX.main.startLifetime.constant);
+                hitVFX.Stop();
+            } 
+            OnHitVfxEnd();
+        }
+        protected abstract void OnHitVfxEnd();
+    }
+}

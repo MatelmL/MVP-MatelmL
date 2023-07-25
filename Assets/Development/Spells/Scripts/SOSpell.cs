@@ -42,6 +42,7 @@ namespace Spells
 
         private void InstantiateProjectile(Instance instance, Transform parent)
         {
+            if (proyectile == null) return;
             instance.proyectile = Instantiate(proyectile, parent: parent);
             instance.proyectile.GetComponent<Proyectile>().Init(proyectileSpeed, instance);
             instance.proyectile.SetActive(false);

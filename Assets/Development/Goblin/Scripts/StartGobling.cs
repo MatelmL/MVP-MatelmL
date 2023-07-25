@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce
+[RequireComponent(typeof(ResetOnGameRestart))]
+public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce, IReset
 {
 
     public UnityEvent OnStartGoblingDie;
     public UnityEvent OnStartGoblingEnable;
-    public float health { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public float health { get; set; }
 
     public Rigidbody chestRb;
     public void TakeDamage(float damageAmount)
@@ -22,7 +21,7 @@ public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce
 
     public void InvokeDie(float time)
     {
-        Invoke("Die", time);
+        Invoke(nameof(Die), time);
     }
     private void Die()
     {
@@ -44,5 +43,10 @@ public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce
         {
             TakeDamage(0);
         }
+    }
+
+    public void Reset()
+    {
+        gameObject.SetActive(true);
     }
 }

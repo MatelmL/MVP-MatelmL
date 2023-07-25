@@ -7,7 +7,7 @@ namespace Spells
         public override void Apply(Collider target)
         {
             addForce(target);
-            chainReacion(target);
+            chainReaction(target);
         }
 
         private void addForce(Collider target)
@@ -18,11 +18,11 @@ namespace Spells
 
         }
 
-        private void chainReacion(Collider target)
+        private void chainReaction(Collider target)
         {
-            // IExplode explode = target.GetComponent<IExplode>();
-            // if (explode == null) return;
-            // explode.explode();
+            IExplode explode = target.GetComponent<IExplode>();
+            if (explode == null) return;
+            explode.Explode(target);
         }
     }
 }

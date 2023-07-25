@@ -1,27 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
+using Spells;
 using UnityEngine;
 
-public class ExplosiveBarrel : MonoBehaviour, ITakeDamage
+[RequireComponent(typeof(ResetOnGameRestart))]
+public class ExplosiveBarrel : SpellCarrier, IExplode, IReset
 {
-    public float health { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-
-    [SerializeField] ParticleSystem explotionVFX;
-    [SerializeField] GameObject Barrel;
-
-
-    [SerializeField] float explotionRadius;
-    [SerializeField] float explotionForce;
-
+    public SOSpell spellData;
     private void Awake()
     {
-        explotionVFX.Stop();
+        Reset();
+        GetSpellComponents();
+        spell = spellData.GetInstance(transform);
     }
-
-    public void TakeDamage(float damageAmount)
+    
+    public void Reset()
     {
-        explotionVFX.Play();
-        Barrel.SetActive(false);
+        if (hitVFX)
+        {
+            hitVFX.time = 0;
+            hitVFX.Stop();   
+        }
+        gameObject.SetActive(true);
     }
 
+    public void Explode()
+    {
+        if (hitVFX) hitVFX.Play();
+        ApplyEffects(targets.GetTargets(collider));
+        gameObject.SetActive(false);
+    }
+
+    protected override void OnHitVfxEnd() {}
 }
