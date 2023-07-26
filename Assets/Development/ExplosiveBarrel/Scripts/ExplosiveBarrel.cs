@@ -7,9 +7,9 @@ public class ExplosiveBarrel : SpellCarrier, IExplode, IReset
     public SOSpell spellData;
     private void Awake()
     {
+        base.Awake();
         GetSpellComponents();
         spell = spellData.GetInstance(transform);
-        collider = GetComponent<Collider>();
         SetSpell(spell);
     }
 

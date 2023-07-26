@@ -16,6 +16,7 @@ namespace Spells
 
         private void Awake()
         {
+            base.Awake();
             rb = GetComponent<Rigidbody>();
         }
 

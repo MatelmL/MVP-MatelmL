@@ -14,7 +14,7 @@ namespace Spells
         protected Effect[] effects;
         protected Collider collider;
 
-        private void Awake()
+        protected void Awake()
         {
             collider = GetComponent<Collider>();
         }
