@@ -12,7 +12,6 @@ namespace Spells
         protected  SOSpell.Instance spell; // Spell object this belongs to. 
         protected Targets targets;
         protected Effect[] effects;
-        
         protected Collider collider;
 
         private void Awake()
@@ -47,17 +46,23 @@ namespace Spells
             }
         }
         
-        protected IEnumerator StartHitVfx()
+        protected void StartHitVfx()
         {
             if (spell.hitVFX)
             {
+                spell.hitVFX.time = 0;
                 spell.hitVFX.transform.position = transform.position;
                 spell.hitVFX.Play();
-                yield return new WaitForSeconds(spell.hitVFX.main.startLifetime.constant);
-                spell.hitVFX.Stop();
             } 
-            OnHitVfxEnd();
         }
-        protected abstract void OnHitVfxEnd();
+
+        protected void RestartHitVfx()
+        {
+            if (spell.hitVFX)
+            {
+                spell.hitVFX.time = 0;
+                spell.hitVFX.Stop();   
+            }
+        }
     }
 }

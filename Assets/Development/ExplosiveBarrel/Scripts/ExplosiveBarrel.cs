@@ -14,20 +14,14 @@ public class ExplosiveBarrel : SpellCarrier, IExplode, IReset
     
     public void Reset()
     {
-        if (spell.hitVFX)
-        {
-            spell.hitVFX.time = 0;
-            spell.hitVFX.Stop();   
-        }
+        RestartHitVfx();
         gameObject.SetActive(true);
     }
 
     public void Explode()
     {
-        if (spell.hitVFX) spell.hitVFX.Play();
+        StartHitVfx();
         ApplyEffects(targets.GetTargets(collider));
         gameObject.SetActive(false);
     }
-
-    protected override void OnHitVfxEnd() {}
 }

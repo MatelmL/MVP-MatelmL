@@ -39,21 +39,16 @@ namespace Spells
         IEnumerator Lifetime()
         {
             yield return new WaitForSeconds(lifetime);
-            if (!spell.hitVFX.isPlaying) ReturnToQueue();
+            ReturnToQueue();
         }
-        
 
         private void OnTriggerEnter(Collider other)
         {
             ApplyEffects(targets.GetTargets(other));
             projectileVFX.Stop();
-            StartCoroutine(StartHitVfx());
-            rb.velocity = Vector3.zero;
-        }
-
-        protected override void OnHitVfxEnd()
-        {
+            StartHitVfx();
             ReturnToQueue();
+            rb.velocity = Vector3.zero;
         }
 
         private void ReturnToQueue()
@@ -69,6 +64,7 @@ namespace Spells
 
         public void Reset()
         {
+            RestartHitVfx();
             ReturnToQueue();
         }
     }
