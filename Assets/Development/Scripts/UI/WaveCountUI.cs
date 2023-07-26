@@ -8,8 +8,7 @@ public class WaveCountUI : MonoBehaviour
     public TextMeshProUGUI waveCountText;
     private void Awake()
     {
-        WaveManager.Instance.OnWaveClear += UpdateUI;
-        
+        WaveManager.OnWaveClear += UpdateUI;
     }
     void UpdateUI(int wave, int nextRest)
     {

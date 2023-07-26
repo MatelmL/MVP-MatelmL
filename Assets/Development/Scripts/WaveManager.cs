@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour, IReset
 {
-    public static WaveManager Instance;
+    public static WaveManager instance;
 
     public int wave;
 
@@ -19,11 +19,11 @@ public class WaveManager : MonoBehaviour, IReset
     public float timeBetweenWaves = 10f;
     public float timeBetweenEnemies = 1f;
 
-    public Action<int,int> OnWaveClear;
+    public static Action<int,int> OnWaveClear;
 
     private void Awake()
     {
-        Instance = this;
+        instance = this;
         wave = 1;
         spawners = FindObjectsOfType<EnemySpawner>();
         //StartWave();

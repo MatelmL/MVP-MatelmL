@@ -30,7 +30,7 @@ public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce, IReset
     }
     private void Disable()
     {
-        WaveManager.Instance.StartWave();
+        WaveManager.instance.StartWave();
         gameObject.SetActive(false);
     }
     public void Init()

@@ -16,6 +16,6 @@ public class EnemyTweenAnimations : MonoBehaviour
     private void ReturnEnemy()
     {
         EnemyPool.Instance.ReturnEnemy(gameObject);
-        WaveManager.Instance.EnemieDie();
+        WaveManager.instance.EnemieDie();
     }
 }

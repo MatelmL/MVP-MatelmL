@@ -15,8 +15,8 @@ MonoBehaviour:
   name: 
   proyectile: {fileID: 0}
   proyectileSpeed: 0
-  radius: 0
-  knockback: 0
+  radius: 10
+  knockback: 150
   heldSpellVFX: {fileID: 0}
   hitVFX: {fileID: 0}
   hitSFX: {fileID: 0}
