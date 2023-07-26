@@ -11,6 +11,10 @@ public class EnemySpawner : MonoBehaviour
         
         // Todo: move all this to an enemy controller
         enemy.transform.GetChild(1).localScale = Vector3.one;
+        for (int i = 0; i < enemy.transform.childCount; i++)
+        {
+            enemy.transform.GetChild(i).localPosition = Vector3.zero;
+        }
         enemy.SetActive(true);
         enemy.GetComponent<EnemyState>().StartMoving();
         enemy.GetComponent<EnemyMovement>().Initialize();

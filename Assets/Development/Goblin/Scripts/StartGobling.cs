@@ -10,6 +10,12 @@ public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce, IReset
     public float health { get; set; }
 
     public Rigidbody chestRb;
+
+    private Transform startPosition;
+    private void Awake()
+    {
+        startPosition = transform;
+    }
     public void TakeDamage(float damageAmount)
     {
         OnStartGoblingDie?.Invoke();
@@ -37,6 +43,7 @@ public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce, IReset
     {
         OnStartGoblingEnable?.Invoke();
         transform.GetChild(1).LeanScale(Vector3.one, 1f);
+        transform.position = startPosition.position;
     }
     private void Update()
     {
