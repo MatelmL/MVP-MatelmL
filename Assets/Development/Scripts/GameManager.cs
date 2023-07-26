@@ -24,21 +24,18 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        Debug.Log("Restart");
         lose = false;
         OnGameRestart?.Invoke();
-        RestartDoor();
-        StartGobling();
     }
 
     public void StartGobling()
     {
-        startGobling.gameObject.SetActive(true);
-        startGobling.Init();
+        startGobling.Reset();
     }
 
-    private void RestartDoor()
+    private void Update()
     {
-        door.gameObject.SetActive(true);
-        door.Reset();
+        if(Input.GetKeyDown(KeyCode.B)) { RestartGame(); }
     }
 }

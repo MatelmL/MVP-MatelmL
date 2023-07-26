@@ -7,11 +7,10 @@ public class ExplosiveBarrel : SpellCarrier, IExplode, IReset
     public SOSpell spellData;
     private void Awake()
     {
-        Reset();
         GetSpellComponents();
         spell = spellData.GetInstance(transform);
     }
-    
+
     public void Reset()
     {
         RestartHitVfx();

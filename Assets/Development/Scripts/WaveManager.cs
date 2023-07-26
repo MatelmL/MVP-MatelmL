@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveManager : MonoBehaviour
+public class WaveManager : MonoBehaviour, IReset
 {
     public static WaveManager Instance;
 
@@ -74,6 +74,17 @@ public class WaveManager : MonoBehaviour
         if(enemiesAlive == 0)
         {
             WaveClear();
+        }
+    }
+
+    public void Reset()
+    {
+        wave = 1;
+        UpdateUI();
+        StopAllCoroutines();
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            EnemyPool.Instance.ReturnEnemy(transform.GetChild(i).gameObject);
         }
     }
 }

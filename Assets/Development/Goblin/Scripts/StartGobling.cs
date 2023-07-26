@@ -36,6 +36,7 @@ public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce, IReset
     public void Init()
     {
         OnStartGoblingEnable?.Invoke();
+        transform.GetChild(1).LeanScale(Vector3.one, 1f);
     }
     private void Update()
     {
@@ -47,6 +48,7 @@ public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce, IReset
 
     public void Reset()
     {
+        Init();
         gameObject.SetActive(true);
     }
 }
