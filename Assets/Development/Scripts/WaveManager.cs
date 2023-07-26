@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Goblin;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour, IReset
@@ -53,7 +54,7 @@ public class WaveManager : MonoBehaviour, IReset
         wave++;
         if (wave % restWaves != 0)
         {
-            Invoke("StartWave", timeBetweenWaves);
+            Invoke(nameof(StartWave), timeBetweenWaves);
         }
         else
         {
@@ -84,7 +85,7 @@ public class WaveManager : MonoBehaviour, IReset
         StopAllCoroutines();
         for (int i = 0; i < transform.childCount; i++)
         {
-            EnemyPool.Instance.ReturnEnemy(transform.GetChild(i).gameObject);
+            EnemyPool.Instance.ReturnEnemy(transform.GetChild(i).GetComponent<EnemyController>());
         }
     }
 }

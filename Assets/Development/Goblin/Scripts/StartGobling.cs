@@ -39,12 +39,6 @@ public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce, IReset
         WaveManager.instance.StartWave();
         gameObject.SetActive(false);
     }
-    public void Init()
-    {
-        OnStartGoblingEnable?.Invoke();
-        transform.GetChild(1).LeanScale(Vector3.one, 1f);
-        transform.position = startPosition.position;
-    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))
@@ -55,7 +49,9 @@ public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce, IReset
 
     public void Reset()
     {
-        Init();
+        OnStartGoblingEnable?.Invoke();
+        transform.GetChild(1).LeanScale(Vector3.one, 1f);
+        transform.position = startPosition.position;
         gameObject.SetActive(true);
     }
 }

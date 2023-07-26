@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Goblin;
 using UnityEngine;
 
 public class EnemyPool : MonoBehaviour
@@ -11,7 +12,8 @@ public class EnemyPool : MonoBehaviour
 
     [SerializeField] private int poolSize = 11;
 
-    public Queue<GameObject> enemies = new();
+    public Queue<EnemyController> enemies = new();
+    public List<EnemyController> enemiesList = new();
     private void Awake()
     {
         Instance = this;
@@ -19,19 +21,21 @@ public class EnemyPool : MonoBehaviour
         for (int i = 0; i < poolSize; i++)
         {
             GameObject gobling = Instantiate(GoblingPrefab, transform);
+            EnemyController enemyController = gobling.GetComponent<EnemyController>();
             gobling.SetActive(false);
-            enemies.Enqueue(gobling);
+            enemies.Enqueue(enemyController);
+            enemiesList.Add(enemyController);
         }
     }
 
-    public GameObject GetEnemy()
+    public EnemyController GetEnemy()
     {
         return enemies.Dequeue();
     }
 
-    public void ReturnEnemy(GameObject gobling)
+    public void ReturnEnemy(EnemyController gobling)
     {
-        gobling.SetActive(false);
+        gobling.gameObject.SetActive(false);
         enemies.Enqueue(gobling);
     }
 }

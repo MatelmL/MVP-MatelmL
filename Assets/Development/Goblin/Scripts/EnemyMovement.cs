@@ -16,16 +16,19 @@ namespace Goblin
         private EnemyState state;
 
         private Transform destination;
+
+        private Collider _collider;
         private void Awake()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             state = GetComponent<EnemyState>();
+            _collider = GetComponent<Collider>();
         }
 
         public void Initialize()
         {
             path = Paths.Instance.GetRandomPath();
-            GetComponent<Collider>().enabled = true;
+            _collider.enabled = true;
             NextWaypoint();
         }
 
@@ -36,7 +39,7 @@ namespace Goblin
             if (other.CompareTag("DeadZone"))
             {
                 Debug.Log("DeadZone");
-                EnemyPool.Instance.ReturnEnemy(gameObject);
+                EnemyPool.Instance.ReturnEnemy(GetComponent<EnemyController>());
             }
             if (GameManager.Instance.lose) return;
             if (other.CompareTag("Waypoint"))

@@ -6,8 +6,6 @@ public class GameManager : MonoBehaviour
     //singleton
     public static GameManager Instance;
 
-    public Door door;
-
     public bool lose = false;
 
     public static Action OnGameRestart;
