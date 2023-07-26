@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5435012673458771333}
   - component: {fileID: -3474480371950470967}
   - component: {fileID: -2340677180922997946}
+  - component: {fileID: 1625392528175104152}
   m_Layer: 0
   m_Name: Basic
   m_TagString: Untagged
@@ -118,9 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf9e281165643b141b570a48e7eb2190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileVFX: {fileID: 2760708134939363515}
   lifetime: 5
-  hitVFX: {fileID: 5140421122912843923}
-  spellVFX: {fileID: 2760708134939363515}
+  timeToVFX: 0
 --- !u!136 &5435012673458771333
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -129,7 +130,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7954170096657420058}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 1
@@ -161,6 +162,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellData: {fileID: 0}
+--- !u!114 &1625392528175104152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7954170096657420058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76011d973aeef8a49b1f00b849894e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2760708134924818299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -410,12 +423,6 @@ PrefabInstance:
 --- !u!4 &5140421122894524885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 444372, guid: 6636b3078b0905e489f698a11b7a6b6b,
-    type: 3}
-  m_PrefabInstance: {fileID: 5140421122894607873}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &5140421122912843923 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 19811986, guid: 6636b3078b0905e489f698a11b7a6b6b,
     type: 3}
   m_PrefabInstance: {fileID: 5140421122894607873}
   m_PrefabAsset: {fileID: 0}

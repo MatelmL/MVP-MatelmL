@@ -17,7 +17,7 @@ public class ExplosiveBarrel : SpellCarrier, IExplode, IReset
         gameObject.SetActive(true);
     }
 
-    public void Explode()
+    public void Explode(Collider collider)
     {
         StartHitVfx();
         ApplyEffects(targets.GetTargets(collider));

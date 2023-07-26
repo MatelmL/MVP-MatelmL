@@ -9,7 +9,7 @@ namespace Spells
             addForce(target);
             chainReaction(target);
         }
-
+        //TODO mover a clase AddForce y dejar solo el metodo chainReaction (asi se puede hacer explotar el barril con el basico por ejemplo)
         private void addForce(Collider target)
         {
             IAddForce addForce = target.GetComponent<IAddForce>();

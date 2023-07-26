@@ -6,9 +6,10 @@ using TMPro;
 public class WaveCountUI : MonoBehaviour
 {
     public TextMeshProUGUI waveCountText;
-    private void Start()
+    private void Awake()
     {
         WaveManager.Instance.OnWaveClear += UpdateUI;
+        
     }
     void UpdateUI(int wave, int nextRest)
     {
