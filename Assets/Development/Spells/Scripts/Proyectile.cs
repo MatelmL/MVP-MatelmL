@@ -12,7 +12,7 @@ namespace Spells
         public float lifetime = 5f;
         private Rigidbody rb;
         private float speed;
-        [SerializeField] float timeToVFX;
+        [SerializeField] float distanceToVFX;
 
         private void Awake()
         {
@@ -33,7 +33,7 @@ namespace Spells
         public void OnEnable()
         {
             StartCoroutine(Lifetime());
-            Invoke(nameof(StartProjectileVFX), timeToVFX);
+            Invoke(nameof(StartProjectileVFX), distanceToVFX / speed);
             rb.velocity = transform.forward * speed;
         }
 

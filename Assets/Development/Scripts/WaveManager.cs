@@ -64,7 +64,7 @@ public class WaveManager : MonoBehaviour, IReset
 
     private void UpdateUI()
     {
-        int nextRest = (int)Math.Ceiling((float)wave / restWaves);
+        int nextRest = (int)Math.Floor((float)wave / restWaves) + 1;
         OnWaveClear?.Invoke(wave, restWaves * nextRest);
     }
 
