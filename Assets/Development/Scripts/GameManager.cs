@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -5,10 +6,9 @@ public class GameManager : MonoBehaviour
     //singleton
     public static GameManager Instance;
 
-    public Door door;
-
     public bool lose = false;
 
+    public static Action OnGameRestart;
     [SerializeField] StartGobling startGobling;
     private void Awake()
     {
@@ -22,20 +22,18 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        Debug.Log("Restart");
         lose = false;
-        RestartDoor();
-        StartGobling();
+        OnGameRestart?.Invoke();
     }
 
     public void StartGobling()
     {
-        startGobling.gameObject.SetActive(true);
-        startGobling.Init();
+        startGobling.Reset();
     }
 
-    private void RestartDoor()
+    private void Update()
     {
-        door.gameObject.SetActive(true);
-        door.ResetLife();
+        if(Input.GetKeyDown(KeyCode.B)) { RestartGame(); }
     }
 }

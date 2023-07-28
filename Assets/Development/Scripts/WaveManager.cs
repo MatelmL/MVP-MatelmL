@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Goblin;
 using UnityEngine;
 
-public class WaveManager : MonoBehaviour
+public class WaveManager : MonoBehaviour, IReset
 {
-    public static WaveManager Instance;
+    public static WaveManager instance;
 
     public int wave;
 
@@ -14,22 +15,19 @@ public class WaveManager : MonoBehaviour
     public EnemySpawner[] spawners;
 
     public int enemiesInWave;
-
     public int enemiesAlive;
 
     public float timeBetweenWaves = 10f;
-
     public float timeBetweenEnemies = 1f;
 
-    public Action<int,int> OnWaveClear;
+    public static Action<int,int> OnWaveClear;
 
     private void Awake()
     {
-        Instance = this;
+        instance = this;
         wave = 1;
         spawners = FindObjectsOfType<EnemySpawner>();
         //StartWave();
-        
     }
     private void Start()
     {
@@ -39,11 +37,8 @@ public class WaveManager : MonoBehaviour
     {
         //curva de dificultad
         enemiesInWave = 100 / (-wave - 11) + 11;
-
         enemiesAlive = enemiesInWave;
-
         StartCoroutine(Spawn());
-
     }
 
     IEnumerator Spawn()
@@ -59,7 +54,7 @@ public class WaveManager : MonoBehaviour
         wave++;
         if (wave % restWaves != 0)
         {
-            Invoke("StartWave", timeBetweenWaves);
+            Invoke(nameof(StartWave), timeBetweenWaves);
         }
         else
         {
@@ -70,7 +65,7 @@ public class WaveManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        int nextRest = (int)Math.Ceiling((float)wave / restWaves);
+        int nextRest = (int)Math.Floor((float)wave / restWaves) + 1;
         OnWaveClear?.Invoke(wave, restWaves * nextRest);
     }
 
@@ -80,6 +75,17 @@ public class WaveManager : MonoBehaviour
         if(enemiesAlive == 0)
         {
             WaveClear();
+        }
+    }
+
+    public void Reset()
+    {
+        wave = 1;
+        UpdateUI();
+        StopAllCoroutines();
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            EnemyPool.Instance.ReturnEnemy(transform.GetChild(i).GetComponent<EnemyController>());
         }
     }
 }

@@ -123,6 +123,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5514191210562151382}
+  - component: {fileID: 7962814350890104899}
+  - component: {fileID: 7450482944908711730}
+  - component: {fileID: 5913636505058288565}
+  - component: {fileID: -423922917522802637}
+  - component: {fileID: 617283380500193160}
+  - component: {fileID: 7727552382236494282}
   m_Layer: 0
   m_Name: ExplosiveBarrel
   m_TagString: Untagged
@@ -139,14 +145,91 @@ Transform:
   m_GameObject: {fileID: 5173940102649559404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.4638386, y: 0, z: 6.489856}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8856725453632193490}
   - {fileID: 4156956240622452768}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7962814350890104899
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5173940102649559404}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0171087, z: 1}
+  m_Center: {x: 0, y: 0.5236093, z: 0}
+--- !u!114 &7450482944908711730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5173940102649559404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76011d973aeef8a49b1f00b849894e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5913636505058288565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5173940102649559404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726d35b2852e58e458ca9c55e84caef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellData: {fileID: 11400000, guid: 74c0c8a180ff0e343b4e76ee7d547756, type: 2}
+--- !u!114 &-423922917522802637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5173940102649559404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0725412e4246e6ac1c4a3a0bddfe07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellData: {fileID: 0}
+--- !u!114 &617283380500193160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5173940102649559404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6af59fcbdf054d599aa232656f2c3d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellData: {fileID: 0}
+--- !u!114 &7727552382236494282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5173940102649559404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840459e453b54c8ea5494daa6f8b1492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellData: {fileID: 0}
 --- !u!1 &5679173863515009785
 GameObject:
   m_ObjectHideFlags: 0

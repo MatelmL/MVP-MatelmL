@@ -31,7 +31,6 @@ public class Paths : MonoBehaviour
     {
         if (paths.Count == 0)
         {
-            Debug.LogError("No paths set");
             return null;
         }
         return new Queue<Transform>(paths[Random.Range(0, paths.Count)].path);

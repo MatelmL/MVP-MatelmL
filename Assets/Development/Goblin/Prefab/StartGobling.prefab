@@ -1993,7 +1993,7 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 0
+    limit: 3
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
@@ -3222,6 +3222,7 @@ GameObject:
   - component: {fileID: 3688373354935674122}
   - component: {fileID: 2589589615780755065}
   - component: {fileID: 2128797365402110676}
+  - component: {fileID: 5128395559026196252}
   m_Layer: 0
   m_Name: StartGobling
   m_TagString: Untagged
@@ -3348,6 +3349,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  OnStartGoblingTween:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2589589615780755065}
+        m_TargetAssemblyTypeName: Goblin.Ragdoll, Assembly-CSharp
+        m_MethodName: SetEnabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   chestRb: {fileID: 1259713124410548150}
 --- !u!95 &3688373354935674122
 Animator:
@@ -3359,16 +3375,13 @@ Animator:
   m_GameObject: {fileID: 7963560952555201994}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9f2223ddf63ed754cb2a419504e567b6, type: 3}
-  m_Controller: {fileID: 9100000, guid: 9251a9988acbdd04e82d0152da78a75e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 85113ce352f0d3949a688caed784beef, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'mixamorig:LeftForeArm'\n\tTransform 'mixamorig:LeftForeArm'\n\tFrom
-    animation clip 'Gobling Run'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -3398,6 +3411,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6335294, y: 0.77023137, z: 0.54850966}
   m_Center: {x: -0.059630394, y: 0.57231706, z: 0.012635082}
+--- !u!114 &5128395559026196252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7963560952555201994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76011d973aeef8a49b1f00b849894e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8129095082000723830
 GameObject:
   m_ObjectHideFlags: 0

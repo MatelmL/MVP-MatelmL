@@ -1,16 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce
+[RequireComponent(typeof(ResetOnGameRestart))]
+public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce, IReset
 {
 
     public UnityEvent OnStartGoblingDie;
     public UnityEvent OnStartGoblingEnable;
-    public float health { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public UnityEvent OnStartGoblingTween;
+    public float health { get; set; }
 
     public Rigidbody chestRb;
+
+    private Transform startPosition;
+    private void Awake()
+    {
+        startPosition = transform;
+    }
     public void TakeDamage(float damageAmount)
     {
         OnStartGoblingDie?.Invoke();
@@ -22,21 +29,23 @@ public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce
 
     public void InvokeDie(float time)
     {
-        Invoke("Die", time);
+        Invoke(nameof(Die), time);
     }
     private void Die()
     {
         //GetComponent<Ragdoll>().SetEnabled(false);
-        transform.GetChild(1).LeanScale(Vector3.zero, 1f).setOnComplete(Disable);
+        transform.GetChild(1).LeanScale(Vector3.zero, 1f).setOnComplete(Disable).setOnStart(TweenStart);
     }
+
+    private void TweenStart()
+    {
+        OnStartGoblingTween?.Invoke();
+    }
+
     private void Disable()
     {
-        WaveManager.Instance.StartWave();
+        WaveManager.instance.StartWave();
         gameObject.SetActive(false);
-    }
-    public void Init()
-    {
-        OnStartGoblingEnable?.Invoke();
     }
     private void Update()
     {
@@ -44,5 +53,13 @@ public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce
         {
             TakeDamage(0);
         }
+    }
+
+    public void Reset()
+    {
+        OnStartGoblingEnable?.Invoke();
+        transform.GetChild(1).LeanScale(Vector3.one, 1f);
+        transform.position = startPosition.position;
+        gameObject.SetActive(true);
     }
 }

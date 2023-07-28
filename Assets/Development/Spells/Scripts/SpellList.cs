@@ -32,7 +32,7 @@ namespace Spells
 
         private void LoadSpells()
         {
-            spells = Resources.LoadAll<SOSpell>("Spells");
+            spells = Resources.LoadAll<SOSpell>("");
             // add spells to queue
             foreach (SOSpell spell in spells)
             {

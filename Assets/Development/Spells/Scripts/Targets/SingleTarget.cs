@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class SingleTarget : Targets
 {
-    public override Collider[] GetTargets(Collision other)
+    public override Collider[] GetTargets(Collider other)
     {
-        return new[] { other.collider };
+        return new[] { other };
     }
 }

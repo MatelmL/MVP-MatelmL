@@ -26,6 +26,11 @@ namespace Goblin
 
             for (int i = 0; i < rigidbodies.Length; i++)
             {
+
+                rigidbodies[i].ResetInertiaTensor();
+                rigidbodies[i].velocity = Vector3.zero;
+
+
                 rigidbodies[i].isKinematic = isKinematic;
                 colliders[i+1].enabled = enabled;
             }
