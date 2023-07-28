@@ -32,8 +32,8 @@ namespace Goblin
         
         public void ReturnEnemy()
         {
-            EnemyPool.Instance.ReturnEnemy(this);
             WaveManager.instance.EnemieDie();
+            EnemyPool.Instance.ReturnEnemy(this);
         }
     }   
 }
