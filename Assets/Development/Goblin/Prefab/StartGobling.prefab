@@ -3349,6 +3349,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  OnStartGoblingTween:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2589589615780755065}
+        m_TargetAssemblyTypeName: Goblin.Ragdoll, Assembly-CSharp
+        m_MethodName: SetEnabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   chestRb: {fileID: 1259713124410548150}
 --- !u!95 &3688373354935674122
 Animator:

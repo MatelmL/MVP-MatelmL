@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +8,7 @@ public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce, IReset
 
     public UnityEvent OnStartGoblingDie;
     public UnityEvent OnStartGoblingEnable;
+    public UnityEvent OnStartGoblingTween;
     public float health { get; set; }
 
     public Rigidbody chestRb;
@@ -32,8 +34,14 @@ public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce, IReset
     private void Die()
     {
         //GetComponent<Ragdoll>().SetEnabled(false);
-        transform.GetChild(1).LeanScale(Vector3.zero, 1f).setOnComplete(Disable);
+        transform.GetChild(1).LeanScale(Vector3.zero, 1f).setOnComplete(Disable).setOnStart(TweenStart);
     }
+
+    private void TweenStart()
+    {
+        OnStartGoblingTween?.Invoke();
+    }
+
     private void Disable()
     {
         WaveManager.instance.StartWave();

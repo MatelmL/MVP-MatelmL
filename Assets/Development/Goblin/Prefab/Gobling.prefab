@@ -83,7 +83,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!136 &497928482
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -194,7 +194,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!136 &2025592195
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -497,7 +497,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!136 &285078453
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -885,7 +885,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!136 &1801816314
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1214,7 +1214,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!136 &503778037
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1572,7 +1572,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!65 &1714429370
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1895,7 +1895,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!136 &1676332101
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2365,7 +2365,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!136 &1420124779
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2508,7 +2508,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!136 &1628971743
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3061,7 +3061,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!136 &1523065001
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3205,7 +3205,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!65 &1801816315
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3639,6 +3639,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 664fc34f7e303784bad1de0e071a7ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onTweenStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3642132683619153015}
+        m_TargetAssemblyTypeName: Goblin.Ragdoll, Assembly-CSharp
+        m_MethodName: SetEnabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3562107273096391091
 MonoBehaviour:
   m_ObjectHideFlags: 0
