@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: 847a1707f6ed9c8499df313b505c83e7
+guid: 5476ca35b0c1da54d925fc887f96a6ae
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material #12
-    second: {fileID: 2100000, guid: a1c77ebfa1824cc4290493c5da56634a, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Flag Texture
-    second: {fileID: 2800000, guid: bab4ca5c4e588f746935cc920d6ec7f4, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
