@@ -3270,6 +3270,7 @@ GameObject:
   - component: {fileID: 1940493523}
   - component: {fileID: 3562107273096391091}
   - component: {fileID: 932358944847284442}
+  - component: {fileID: 7287517627241131913}
   m_Layer: 0
   m_Name: Gobling
   m_TagString: Untagged
@@ -3680,6 +3681,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6335294, y: 0.77023137, z: 0.54850966}
   m_Center: {x: -0.059630394, y: 0.57231706, z: 0.012635082}
+--- !u!114 &7287517627241131913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9223132444946474948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78bc01bcd09ca9941b842bbac2fac2db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigid: {fileID: 1714429368}
 --- !u!1001 &1797992989257910730
 PrefabInstance:
   m_ObjectHideFlags: 0

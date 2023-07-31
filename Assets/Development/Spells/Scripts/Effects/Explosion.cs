@@ -14,7 +14,7 @@ namespace Spells
         {
             IAddForce addForce = target.GetComponent<IAddForce>();
             if (addForce == null) return;
-            addForce.AddForce(spellData.knockback, transform, spellData.radius);
+            addForce.AddForce(spellData.force, transform, spellData.radius);
 
         }
 
