@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class SoundsManager : MonoBehaviour
 {
-   [SerializeField] AudioSource startMusic, combatMusic;
+   [SerializeField] AudioSource startMusic, combatMusic, Shofar;
     [SerializeField] float timeChange, valueChange;
 
     public void StartMusic()
@@ -14,12 +14,17 @@ public class SoundsManager : MonoBehaviour
     }
 
      IEnumerator ChangeMusic()
-    {
+     {
         combatMusic.Play();
         yield return new WaitForSeconds(timeChange);
         combatMusic.volume += valueChange;
         startMusic.volume = 1 - combatMusic.volume;
         if (combatMusic.volume >= 1) startMusic.Stop();
         else StartCoroutine(ChangeMusic());
+     }
+    public void PlayShofar()
+    {
+        Shofar.Play();
     }
+
 }

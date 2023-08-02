@@ -25,6 +25,8 @@ public class MovementRecognizer : MonoBehaviour
     [System.Serializable]
     public class UnityStringEvent : UnityEvent<string> { }
     public UnityStringEvent OnRecognized;
+    public UnityEvent OnNotRecognized;
+    public UnityEvent OnStartDrawing;
 
     private List<Gesture> trainingSet = new List<Gesture>();
     private bool isMoving = false;
@@ -97,6 +99,7 @@ public class MovementRecognizer : MonoBehaviour
 
     void StartMovement()
     {
+        OnStartDrawing.Invoke();
         Debug.Log("Start Movement");
         isMoving = true;
         positionsList.Clear();
@@ -146,6 +149,10 @@ public class MovementRecognizer : MonoBehaviour
             {
                 OnRecognized.Invoke(result.GestureClass);
                 aimLineRenderer.EnableLine(true);
+            }
+            else
+            {
+                OnNotRecognized.Invoke();
             }
         }
     }
