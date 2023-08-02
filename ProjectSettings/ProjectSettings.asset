@@ -137,6 +137,8 @@ PlayerSettings:
   bundleVersion: 0.1.1
   preloadedAssets:
   - {fileID: 11400000, guid: a5b74bf199653de449f2062845ce03bc, type: 2}
+  - {fileID: -4076272916083328738, guid: bbf13876040f3d84d875cfc90887b0d9, type: 2}
+  - {fileID: 11400000, guid: 86b20877a8da91e469863476200ff278, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -156,7 +158,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.MatelmL.MVP1
+    Android: com.MatelmL.MVP2
     Standalone: com.UnityTechnologies.com.unity.template.urp-blank
     iPhone: com.Unity-Technologies.com.unity.template.urp-blank
   buildNumber:
