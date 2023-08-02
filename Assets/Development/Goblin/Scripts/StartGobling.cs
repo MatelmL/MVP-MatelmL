@@ -45,6 +45,7 @@ public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce, IReset
     private void Disable()
     {
         WaveManager.instance.StartWave();
+        SoundsManager.instance.PlayShofar();
         gameObject.SetActive(false);
     }
     private void Update()

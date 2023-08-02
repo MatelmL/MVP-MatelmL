@@ -8,6 +8,11 @@ public class SoundsManager : MonoBehaviour
    [SerializeField] AudioSource startMusic, combatMusic, Shofar;
     [SerializeField] float timeChange, valueChange;
 
+    public static SoundsManager instance;
+    private void Awake()
+    {
+        instance = this;
+    }
     public void StartMusic()
     {
         StartCoroutine(ChangeMusic());
