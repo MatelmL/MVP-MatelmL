@@ -13,13 +13,13 @@ public class Spawn : Effect
     {
         Instance = Instantiate(Instance);
         Init = Instance.GetComponent<ISpellInit>();
+        Init.Init(spellData);
         Instance.SetActive(false);
     }
 
     public override void Apply(Collider target)
     {
         Instance.transform.position = target.transform.position;
-        Init.Init(spellData);
         Instance.SetActive(true);
     }
 }

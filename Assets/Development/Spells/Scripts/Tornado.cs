@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
+using System.Collections;
 namespace Spells
 {
     public class Tornado : MonoBehaviour, ISpellInit
@@ -10,6 +12,7 @@ namespace Spells
         private Collider _collider;
         public float RotationSpeed;
         private ICaught[] _caughts;
+        public float Duration;
         private void Awake()
         {
             _collider = GetComponentInChildren<Collider>();
@@ -19,6 +22,17 @@ namespace Spells
         {
             spellData = _spellData;
         }
+
+        IEnumerator Lifetime()
+        {
+            yield return new WaitForSeconds(Duration);
+            if (gameObject.activeSelf) gameObject.SetActive(false);
+        }
+        private void OnEnable()
+        {
+            StartCoroutine(Lifetime());
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             var caught = other.GetComponent<ICaught>();
