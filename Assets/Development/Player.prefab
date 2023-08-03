@@ -398,7 +398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3993019109748432714}
   m_Layer: 0
-  m_Name: Mago 1
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -563,7 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2ade57a0d61e244b0c91c792e9968f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineLength: 50
+  lineLength: 5
 --- !u!1001 &1143442745184302159
 PrefabInstance:
   m_ObjectHideFlags: 0
