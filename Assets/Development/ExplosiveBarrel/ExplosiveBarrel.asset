@@ -16,7 +16,7 @@ MonoBehaviour:
   proyectile: {fileID: 0}
   proyectileSpeed: 0
   radius: 10
-  knockback: 150
+  force: 150
   heldSpellVFX: {fileID: 0}
-  hitVFX: {fileID: 0}
-  hitSFX: {fileID: 0}
+  hitVFX: {fileID: 8446491015658393810, guid: accaa27c5c9013d41b6de1f02a937252, type: 3}
+  castSFX: {fileID: 0}

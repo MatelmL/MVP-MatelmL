@@ -3820,6 +3820,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: 2a7142889e16aea409fc18fd5a82a62f, type: 3}
   - {fileID: 8300000, guid: 49eab5f3a446b6449a49c4f3032404cf, type: 3}
+  - {fileID: 8300000, guid: 041ac28449ec86b4683216ba7e3d9c8b, type: 3}
 --- !u!1001 &1797992989257910730
 PrefabInstance:
   m_ObjectHideFlags: 0

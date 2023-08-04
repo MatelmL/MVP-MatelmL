@@ -83,11 +83,11 @@ namespace Goblin
         }
         private void OnEnable()
         {
-            Door.OnDoorDie += Lose;
+            Door.OnDoorDieAction += Lose;
         }
         private void OnDisable()
         {
-            Door.OnDoorDie -= Lose;
+            Door.OnDoorDieAction -= Lose;
         }
     }
 }

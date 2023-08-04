@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
-        Door.OnDoorDie += () => lose = true;
+        Door.OnDoorDieAction += () => lose = true;
         RestartGame();
     }
 

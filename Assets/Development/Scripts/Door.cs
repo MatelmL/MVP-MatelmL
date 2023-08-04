@@ -6,7 +6,8 @@ using UnityEngine.Events;
 public class Door : MonoBehaviour,ITakeDamage, IReset
 {
 
-    public static Action OnDoorDie;
+    public static Action OnDoorDieAction;
+    public UnityEvent OnDoorDie;
     public UnityEvent<float, float> OnDamageTaken;
 
     public float maxHealth;
@@ -30,6 +31,7 @@ public class Door : MonoBehaviour,ITakeDamage, IReset
 
         if (health <= 0)
         {
+            OnDoorDieAction?.Invoke();
             OnDoorDie?.Invoke();
             gameObject.SetActive(false);
         }  

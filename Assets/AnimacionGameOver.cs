@@ -11,7 +11,7 @@ public class AnimacionGameOver : MonoBehaviour, IReset
     private void Start()
     {
         targetObject.SetActive(false);
-        Door.OnDoorDie += GameOver;
+        Door.OnDoorDieAction += GameOver;
 
         originalScale = targetObject.transform.localScale;
     }

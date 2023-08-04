@@ -13,7 +13,7 @@ public class SoundsManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        Door.OnDoorDie += DieSound;
+        Door.OnDoorDieAction += DieSound;
     }
     void DieSound()
     {
@@ -34,6 +34,7 @@ public class SoundsManager : MonoBehaviour
      IEnumerator ChangeMusicCoroutine(AudioSource actualSourse, string newMusic)
     {
         AudioSource newSourse = musics.Find(c => c.name == newMusic);
+        if(newSourse == actualSourse) yield break;
         newSourse.Play();
         yield return new WaitForSeconds(timeChange);
         newSourse.volume += valueChange;
