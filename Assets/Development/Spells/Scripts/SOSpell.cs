@@ -46,6 +46,7 @@ namespace Spells
             if (hitVFX == null) return;
             GameObject heldSpellInstance = Instantiate(hitVFX, parent: parent);
             instance.hitVFX = heldSpellInstance.GetComponent<ParticleSystem>();
+            instance.hitVFX.gameObject.SetActive(false);
         }
 
         private void InstantiateProjectile(Instance instance, Transform parent)
