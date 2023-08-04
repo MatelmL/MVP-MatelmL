@@ -677,6 +677,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6349773958532582605, guid: 4de47968310b52048b96b7aaac995233,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349773958532582605, guid: 4de47968310b52048b96b7aaac995233,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1208,6 +1213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Grass (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349773958532582605, guid: 4de47968310b52048b96b7aaac995233,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6349773958532582605, guid: 4de47968310b52048b96b7aaac995233,
         type: 3}
@@ -2785,6 +2795,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Grass (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349773958532582605, guid: 4de47968310b52048b96b7aaac995233,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6349773958532582605, guid: 4de47968310b52048b96b7aaac995233,
         type: 3}
@@ -24939,6 +24954,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6349773958532582605, guid: 4de47968310b52048b96b7aaac995233,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349773958532582605, guid: 4de47968310b52048b96b7aaac995233,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -26611,6 +26631,18 @@ MonoBehaviour:
   scaleAndMoveDuration: 1
   startAnimacion: 3
   targetScale: {x: 1.5, y: 1.5, z: 1.5}
+--- !u!114 &898155604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898155601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76011d973aeef8a49b1f00b849894e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &908631545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28515,6 +28547,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6349773958532582605, guid: 4de47968310b52048b96b7aaac995233,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349773958532582605, guid: 4de47968310b52048b96b7aaac995233,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -30042,6 +30079,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Grass (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349773958532582605, guid: 4de47968310b52048b96b7aaac995233,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6349773958532582605, guid: 4de47968310b52048b96b7aaac995233,
         type: 3}
@@ -37514,6 +37556,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6349773958532582605, guid: 4de47968310b52048b96b7aaac995233,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349773958532582605, guid: 4de47968310b52048b96b7aaac995233,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -39610,6 +39657,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Grass (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349773958532582605, guid: 4de47968310b52048b96b7aaac995233,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6349773958532582605, guid: 4de47968310b52048b96b7aaac995233,
         type: 3}
