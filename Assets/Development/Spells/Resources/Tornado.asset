@@ -20,4 +20,4 @@ MonoBehaviour:
   force: 95
   heldSpellVFX: {fileID: 0}
   hitVFX: {fileID: 0}
-  hitSFX: {fileID: 0}
+  castSFX: {fileID: 8300000, guid: 5e050d32300324241845f40cb1605246, type: 3}
