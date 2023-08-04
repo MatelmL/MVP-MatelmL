@@ -3,17 +3,19 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(ResetOnGameRestart))]
-public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce, IReset
+public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce, IReset, ICaught
 {
 
     public UnityEvent OnStartGoblingDie;
     public UnityEvent OnStartGoblingEnable;
     public UnityEvent OnStartGoblingTween;
+    public Action OnStartGoblingTweenAction;
     public float health { get; set; }
 
     public Rigidbody chestRb;
 
     private Transform startPosition;
+
     private void Awake()
     {
         startPosition = transform;
@@ -40,6 +42,7 @@ public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce, IReset
     private void TweenStart()
     {
         OnStartGoblingTween?.Invoke();
+        OnStartGoblingTweenAction?.Invoke();
     }
 
     private void Disable()
@@ -62,5 +65,16 @@ public class StartGobling : MonoBehaviour, ITakeDamage, IAddForce, IReset
         transform.GetChild(1).LeanScale(Vector3.one, 1f);
         transform.position = startPosition.position;
         gameObject.SetActive(true);
+    }
+
+    public void OnCaught(Action onDeathCallback)
+    {
+        OnStartGoblingTweenAction += onDeathCallback;
+        TakeDamage(0);
+    }
+
+    public Rigidbody GetRigidbody()
+    {
+        return chestRb;
     }
 }

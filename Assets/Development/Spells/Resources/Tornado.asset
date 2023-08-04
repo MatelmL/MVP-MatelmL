@@ -15,9 +15,9 @@ MonoBehaviour:
   name: tornado
   proyectile: {fileID: 2940177860443891668, guid: 979409a8b6566624b91105933a53131e,
     type: 3}
-  proyectileSpeed: 120
+  proyectileSpeed: 30
   radius: 10
-  force: 150
+  force: 95
   heldSpellVFX: {fileID: 0}
   hitVFX: {fileID: 0}
   hitSFX: {fileID: 0}
