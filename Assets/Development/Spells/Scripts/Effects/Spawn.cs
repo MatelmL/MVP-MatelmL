@@ -9,9 +9,9 @@ public class Spawn : Effect
     public GameObject Prefab;
     private GameObject Instance; 
     private ISpellInit Init;
-    private void Awake()
+    private void Start()
     {
-        Instance = Instantiate(Instance);
+        Instance = Instantiate(Prefab,transform.position,Quaternion.identity,null);
         Init = Instance.GetComponent<ISpellInit>();
         Init.Init(spellData);
         Instance.SetActive(false);
@@ -19,7 +19,7 @@ public class Spawn : Effect
 
     public override void Apply(Collider target)
     {
-        Instance.transform.position = target.transform.position;
+        Instance.transform.position = transform.position;
         Instance.SetActive(true);
     }
 }

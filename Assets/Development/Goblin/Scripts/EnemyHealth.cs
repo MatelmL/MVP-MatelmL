@@ -7,12 +7,12 @@ namespace Goblin
     {
         private EnemyState state;
         public Rigidbody chestRb;
-        private EnemyController enemyController;
+        private EnemyTweenAnimations enemyTweenAnimation;
 
         private void Awake()
         {
             state = GetComponent<EnemyState>();
-            enemyController = GetComponent<EnemyController>();
+            enemyTweenAnimation = GetComponent<EnemyTweenAnimations>();
         }
 
         public float health { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -34,7 +34,7 @@ namespace Goblin
 
         public void OnCaught(Action onDeathCallback)
         {
-            enemyController.onDisable += onDeathCallback;
+            enemyTweenAnimation.onTweenStartAction += onDeathCallback;
             state.StartDying();
         }
     }

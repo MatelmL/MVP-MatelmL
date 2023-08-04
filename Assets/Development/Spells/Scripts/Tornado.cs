@@ -37,7 +37,7 @@ namespace Spells
         {
             var caught = other.GetComponent<ICaught>();
             caught?.OnCaught(onDeathCallback: () => _caughts.Remove(caught));
-            _caughts.Add(caught);
+            if(caught != null)_caughts.Add(caught);
         }
 
         private void FixedUpdate()
@@ -45,8 +45,8 @@ namespace Spells
             foreach (var caught in _caughts)
             {
                 var rb = caught.GetRigidbody();
-                rb.AddForce(Vector3.up * spellData.force, ForceMode.Acceleration);
-                rb.transform.RotateAround(transform.position, Vector3.up, RotationSpeed * Time.deltaTime);
+                rb?.AddForce(Vector3.up * spellData.force, ForceMode.Acceleration);
+                rb?.transform.RotateAround(transform.position, Vector3.up, RotationSpeed * Time.deltaTime);
             }
         }
     }

@@ -7,6 +7,7 @@ public class EnemyTweenAnimations : MonoBehaviour
 
     public Action onTweenEnd;
     public UnityEvent onTweenStart;
+    public Action onTweenStartAction;
     public void InvokeDie(float time)
     {
         Invoke(nameof(Die), time);
@@ -18,5 +19,6 @@ public class EnemyTweenAnimations : MonoBehaviour
     private void TweenStart()
     {
         onTweenStart?.Invoke();
+        onTweenStartAction?.Invoke();
     }
 }

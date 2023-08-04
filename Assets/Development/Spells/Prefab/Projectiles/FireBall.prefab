@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileVFX: {fileID: 880918668145289574}
   lifetime: 5
-  timeToVFX: 0.5
+  distanceToVFX: 0.5
 --- !u!114 &3322454478531873190
 MonoBehaviour:
   m_ObjectHideFlags: 0
