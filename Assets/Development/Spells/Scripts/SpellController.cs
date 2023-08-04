@@ -21,7 +21,7 @@ namespace Spells
 
         private void Start()
         {
-            if (debug) heldSpell = SpellList.instance.GetSpell("fireball");
+            if (debug) heldSpell = SpellList.instance.GetSpell("tornado");
         }
 
         public void OnFinishDrawing(string SpellName)

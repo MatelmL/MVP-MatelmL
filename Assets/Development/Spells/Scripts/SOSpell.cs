@@ -1,6 +1,7 @@
 using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Spells
 {
@@ -12,7 +13,7 @@ namespace Spells
         public GameObject proyectile;
         public float proyectileSpeed;
         public float radius;
-        public float knockback;
+        [FormerlySerializedAs("knockback")] public float force;
         public GameObject heldSpellVFX;
         public GameObject hitVFX;
         public GameObject hitSFX;

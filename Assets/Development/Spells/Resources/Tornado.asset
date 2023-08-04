@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa45fd8649c012a4a8bcb67acbfd47a3, type: 3}
-  m_Name: Fireball
+  m_Name: Tornado
   m_EditorClassIdentifier: 
-  name: fireball
-  proyectile: {fileID: 5911144701262280291, guid: 4a8a3d9cc8110b3449b3db5e95c532b8,
+  name: tornado
+  proyectile: {fileID: 2940177860443891668, guid: 979409a8b6566624b91105933a53131e,
     type: 3}
-  proyectileSpeed: 20
+  proyectileSpeed: 30
   radius: 10
-  force: 150
+  force: 95
   heldSpellVFX: {fileID: 0}
-  hitVFX: {fileID: 8446491015658393810, guid: c404488a291011246a3410223d52e8e6, type: 3}
+  hitVFX: {fileID: 0}
   hitSFX: {fileID: 0}

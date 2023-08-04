@@ -29134,6 +29134,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3472713565022528177, guid: cb99d92f29337244fb4e1e02b37f696f, type: 3}
+--- !u!65 &1068911140
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068911132}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 27.59, y: 12.48, z: 1}
+  m_Center: {x: 0, y: 23.52, z: 2.26}
 --- !u!1001 &1073548011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47890,11 +47903,6 @@ PrefabInstance:
       propertyPath: OnStartGoblingDie.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 483802609}
-    - target: {fileID: 4527598608959989899, guid: 2f7e6f7e3e7f3214982f67777b686586,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7336241552958242672, guid: 2f7e6f7e3e7f3214982f67777b686586,
         type: 3}
       propertyPath: m_RootOrder
@@ -48573,7 +48581,7 @@ PrefabInstance:
     - target: {fileID: 7445126936066899259, guid: 6ae01e5813aaaf64a8dc9806c0e126a2,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ae01e5813aaaf64a8dc9806c0e126a2, type: 3}
