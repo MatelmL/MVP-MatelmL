@@ -37,7 +37,7 @@ namespace Spells
             foreach (SOSpell spell in spells)
             {
                 spellQueues.Add(spell.name, new Queue<SOSpell.Instance>());
-                foreach (int i in Enumerable.Range(0, SpellQueueSize))
+                foreach (var _ in Enumerable.Range(0, SpellQueueSize))
                 {
                     spellQueues[spell.name].Enqueue(spell.GetInstance(transform));
                 }

@@ -4961,11 +4961,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e125f0666d372184c8c3f33de891c11e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 2
-  rotationAxis: {x: 0, y: 0, z: 0}
-  lift: 79.8
-  rotationStrength: 1000
-  tornadoStrength: 1000
+  RotationSpeed: 100
+  Duration: 5
 --- !u!1 &3544073997461125272
 GameObject:
   m_ObjectHideFlags: 0

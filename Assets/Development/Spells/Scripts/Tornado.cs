@@ -11,7 +11,7 @@ namespace Spells
 
         private Collider _collider;
         public float RotationSpeed;
-        private ICaught[] _caughts;
+        private List<ICaught> _caughts = new();
         public float Duration;
         private void Awake()
         {
@@ -36,10 +36,8 @@ namespace Spells
         private void OnTriggerEnter(Collider other)
         {
             var caught = other.GetComponent<ICaught>();
-            if (caught == null) return;
-            var takeDamage = other.GetComponent<ITakeDamage>();
-            takeDamage?.TakeDamage(1);
-            caught.OnCaught();
+            caught?.OnCaught(onDeathCallback: () => _caughts.Remove(caught));
+            _caughts.Add(caught);
         }
 
         private void FixedUpdate()
@@ -48,7 +46,7 @@ namespace Spells
             {
                 var rb = caught.GetRigidbody();
                 rb.AddForce(Vector3.up * spellData.force, ForceMode.Acceleration);
-                rb.transform.RotateAround(transform.position, Vector3.up, 100 * Time.deltaTime);
+                rb.transform.RotateAround(transform.position, Vector3.up, RotationSpeed * Time.deltaTime);
             }
         }
     }

@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Goblin
@@ -7,6 +9,7 @@ namespace Goblin
         EnemyState state;
         EnemyMovement movement;
         EnemyTweenAnimations tweenAnimations;
+        public Action onDisable;
 
         private void Awake()
         {
@@ -29,7 +32,13 @@ namespace Goblin
             gameObject.SetActive(true);
             
         }
-        
+
+        private void OnDisable()
+        {
+            onDisable?.Invoke();
+            onDisable = null; 
+        }
+
         public void ReturnEnemy()
         {
             WaveManager.instance.EnemieDie();
