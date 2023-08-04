@@ -1,8 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Spells
 {
+    [RequireComponent(typeof(AudioSource))]
     [RequireComponent(typeof(ResetOnGameRestart))]
     [RequireComponent(typeof(Rigidbody))]
     public class Proyectile : SpellCarrier, IReset
@@ -13,7 +15,6 @@ namespace Spells
         private Rigidbody rb;
         private float speed;
         [SerializeField] float distanceToVFX;
-
         private void Awake()
         {
             base.Awake();
@@ -26,7 +27,6 @@ namespace Spells
             targets = GetComponent<Targets>();
             effects = GetComponents<Effect>();
             SetSpell(spell);
-            
             gameObject.SetActive(false);
         }
 

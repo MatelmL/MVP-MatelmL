@@ -16,7 +16,7 @@ namespace Spells
         [FormerlySerializedAs("knockback")] public float force;
         public GameObject heldSpellVFX;
         public GameObject hitVFX;
-        public GameObject hitSFX;
+        public AudioClip castSFX;
 
         public class Instance
         {
@@ -24,7 +24,6 @@ namespace Spells
             public GameObject proyectile;
             public ParticleSystem heldSpellVFX;
             public ParticleSystem hitVFX;
-            public GameObject hitSFX;
         }
         public Instance GetInstance(Transform parent)
         {

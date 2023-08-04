@@ -15,6 +15,13 @@ public class AudioSourceController : MonoBehaviour
         source.clip = audioClip;
         source.Play();
     }
+
+    public void PlayClip(AudioClip clip)
+    {
+        if (clip == null) return;
+        source.clip = clip;
+        source.Play();
+    }
     public void RandomSound() 
     {
         int randomSound = Random.Range(0, randomClips.Length);

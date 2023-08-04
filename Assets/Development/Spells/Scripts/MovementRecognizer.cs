@@ -62,7 +62,7 @@ public class MovementRecognizer : MonoBehaviour
                 SpellController.instance.Shoot();
                 canDraw = false;
                 aimLineRenderer.EnableLine(false);
-                Invoke("EnableDrawing", drawCooldown);
+                Invoke(nameof(EnableDrawing), drawCooldown);
             }
             return;
         }

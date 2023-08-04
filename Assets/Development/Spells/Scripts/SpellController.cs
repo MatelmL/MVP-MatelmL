@@ -10,12 +10,14 @@ namespace Spells
         public SOSpell.Instance heldSpell;
         [HideInInspector] public GameObject heldSpellVFX;
         public static SpellController instance;
+        AudioSourceController audioSourceController;
 
         public bool debug = false;
         private void Awake()
         {
             if (instance == null) instance = this;
             else Destroy(this);
+            audioSourceController = GetComponent<AudioSourceController>();
         }
 
 
@@ -46,9 +48,13 @@ namespace Spells
             heldSpell.proyectile.transform.position = wandTip.transform.position;
             heldSpell.proyectile.transform.rotation = wandTip.transform.rotation;
             heldSpell.proyectile.SetActive(true);
+            StartSpellSFX();
             if (!debug) heldSpell = null;
         }
-
+        private void StartSpellSFX()
+        {
+            audioSourceController.PlayClip(heldSpell.spellData.castSFX);
+        }
         private void DisableSpellVFX()
         {
             if (!heldSpellVFX) return;
