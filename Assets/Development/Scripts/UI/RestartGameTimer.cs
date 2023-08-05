@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
 public class RestartGameTimer : MonoBehaviour, IReset
 {
     [SerializeField] int restartTime = 10;
     [SerializeField] float timeBeforeTimer = 10;
     [SerializeField] TextMeshProUGUI restartTimerText;
+    private Vector3 scale;
     public void Reset()
     {
         gameObject.SetActive(false);
@@ -16,11 +18,14 @@ public class RestartGameTimer : MonoBehaviour, IReset
     private void Awake()
     {
         AnimacionGameOver.OnAnimationCompleted += () => Invoke(nameof(Restart),timeBeforeTimer);
+        scale = transform.localScale;
         Reset();
     }
 
     public void Restart()
     {
+        transform.localScale = Vector3.zero;
+        transform.LeanScale(scale, 1f);
         gameObject.SetActive(true);
         StartCoroutine(Timer());
     }

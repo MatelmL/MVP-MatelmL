@@ -28,18 +28,19 @@ public class SoundsManager : MonoBehaviour
                 actualSourse = music;
                 break;
             }
-        StartCoroutine(ChangeMusicCoroutine(actualSourse, newMusic));
+        AudioSource newSourse = musics.Find(c => c.name == newMusic);
+        if (newSourse == actualSourse) return;
+        newSourse.Play();
+        StartCoroutine(ChangeMusicCoroutine(actualSourse, newSourse));
     }
 
-     IEnumerator ChangeMusicCoroutine(AudioSource actualSourse, string newMusic)
+     IEnumerator ChangeMusicCoroutine(AudioSource actualSourse, AudioSource newMusic)
     {
-        AudioSource newSourse = musics.Find(c => c.name == newMusic);
-        if(newSourse == actualSourse) yield break;
-        newSourse.Play();
+        
         yield return new WaitForSeconds(timeChange);
-        newSourse.volume += valueChange;
-        actualSourse.volume = 1 - newSourse.volume;
-        if (newSourse.volume >= 1) actualSourse.Stop();
+        newMusic.volume += valueChange;
+        actualSourse.volume = 1 - newMusic.volume;
+        if (newMusic.volume >= 1) actualSourse.Stop();
         else StartCoroutine(ChangeMusicCoroutine(actualSourse, newMusic));
      }
     public void PlayShofar()
