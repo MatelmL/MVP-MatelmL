@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PDollarGestureRecognizer;
-using System.IO;
 using Spells;
 using UnityEngine.Events;
 

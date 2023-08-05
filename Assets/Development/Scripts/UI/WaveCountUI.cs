@@ -1,11 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class WaveCountUI : MonoBehaviour
+public class WaveCountUI : MonoBehaviour,IReset
 {
     public TextMeshProUGUI waveCountText;
+
+    public void Reset()
+    {
+        waveCountText.text = 0 + "/" + 8;
+
+    }
+
     private void Awake()
     {
         WaveManager.OnWaveClear += UpdateUI;

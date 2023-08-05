@@ -14,6 +14,14 @@ public class AudioSourceController : MonoBehaviour
         if (audioClip == null) return;
         source.PlayOneShot(audioClip);
     }
+    public void PlayClipInSource(string clip)
+    {
+        AudioClip audioClip = clips.Find(c => c.name == clip);
+        if (audioClip == null) return;
+        source.clip = audioClip;
+        source.Play();
+    }
+    
 
     public void PlayClip(AudioClip clip)
     {

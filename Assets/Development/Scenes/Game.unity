@@ -32339,7 +32339,7 @@ PrefabInstance:
     - target: {fileID: 8155358821987311612, guid: f95331b19d6b1cf4e9ab16ca02c14599,
         type: 3}
       propertyPath: m_text
-      value: Time to Restart
+      value: Restarting in
       objectReference: {fileID: 0}
     - target: {fileID: 8155358821987311612, guid: f95331b19d6b1cf4e9ab16ca02c14599,
         type: 3}
@@ -41596,7 +41596,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794926628}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 43.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47984,6 +47984,26 @@ PrefabInstance:
       propertyPath: clips.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 9ace9f0cd0db91b45a5a6c8dd6f01538, type: 3}
+    - target: {fileID: 3993019108384308894, guid: 6c7830cd1a81cc14a8bc1c4a58e5950f,
+        type: 3}
+      propertyPath: OnNotRecognized.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3993019108384308894, guid: 6c7830cd1a81cc14a8bc1c4a58e5950f,
+        type: 3}
+      propertyPath: OnRecognized.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayClipInSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 3993019108384308894, guid: 6c7830cd1a81cc14a8bc1c4a58e5950f,
+        type: 3}
+      propertyPath: OnStartDrawing.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayClipInSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 3993019108384308894, guid: 6c7830cd1a81cc14a8bc1c4a58e5950f,
+        type: 3}
+      propertyPath: OnNotRecognized.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayClipInSource
+      objectReference: {fileID: 0}
     - target: {fileID: 3993019109748432714, guid: 6c7830cd1a81cc14a8bc1c4a58e5950f,
         type: 3}
       propertyPath: m_RootOrder
