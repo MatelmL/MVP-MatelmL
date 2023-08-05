@@ -12,6 +12,7 @@ public class RestartGameTimer : MonoBehaviour, IReset
     private Vector3 scale;
     public void Reset()
     {
+        transform.localScale = Vector3.zero;
         gameObject.SetActive(false);
     }
 
@@ -24,7 +25,6 @@ public class RestartGameTimer : MonoBehaviour, IReset
 
     public void Restart()
     {
-        transform.localScale = Vector3.zero;
         transform.LeanScale(scale, 1f);
         gameObject.SetActive(true);
         StartCoroutine(Timer());
