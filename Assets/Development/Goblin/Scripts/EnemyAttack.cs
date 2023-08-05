@@ -16,6 +16,7 @@ namespace Goblin {
         //llamar desde la animacion
         public void MakeDamage()
         {
+            if(!GameManager.Instance.lose)
             door.TakeDamage(damage);
         }
     } 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AnimacionGameOver : MonoBehaviour, IReset
@@ -7,6 +8,7 @@ public class AnimacionGameOver : MonoBehaviour, IReset
     public float startAnimacion;
     public Vector3 targetScale;
     private Vector3 originalScale;
+    public static Action OnAnimationCompleted;
 
     private void Start()
     {
@@ -23,7 +25,8 @@ public class AnimacionGameOver : MonoBehaviour, IReset
             targetObject.SetActive(true);
 
             LeanTween.scale(targetObject, targetScale, scaleAndMoveDuration)
-                .setEase(LeanTweenType.easeOutSine);
+                .setEase(LeanTweenType.easeOutSine)
+                .setOnComplete(OnAnimationCompleted);
         });
     }
 
