@@ -22,6 +22,8 @@ public class WaveManager : MonoBehaviour, IReset
 
     public static Action<int,int> OnWaveClear;
 
+    bool waveFinish = false;
+
     private void Awake()
     {
         instance = this;
@@ -51,6 +53,7 @@ public class WaveManager : MonoBehaviour, IReset
 
     public void WaveClear()
     {
+        StopAllCoroutines();
         wave++;
         if (wave % restWaves != 0)
         {
@@ -72,10 +75,14 @@ public class WaveManager : MonoBehaviour, IReset
     public void EnemieDie()
     {
         enemiesAlive--;
+
         if(enemiesAlive == 0)
         {
             WaveClear();
         }
+        else
+        StartCoroutine(CheckWaveFinish());
+
     }
 
     public void Reset()
@@ -86,6 +93,15 @@ public class WaveManager : MonoBehaviour, IReset
         for (int i = 0; i < transform.childCount; i++)
         {
             EnemyPool.Instance.ReturnEnemy(transform.GetChild(i).GetComponent<EnemyController>());
+        }
+    }
+    IEnumerator CheckWaveFinish()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if (EnemyPool.Instance.enemiesList.Find(c => c.gameObject.activeInHierarchy) == null)
+        {
+            WaveClear();
         }
     }
 }

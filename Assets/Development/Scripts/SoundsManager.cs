@@ -6,8 +6,10 @@ using UnityEngine.Events;
 public class SoundsManager : MonoBehaviour
 {
     [SerializeField] List<AudioSource>  musics = new List<AudioSource>();
-   [SerializeField] AudioSource  Shofar;
+    [SerializeField] AudioSource  Shofar;
     [SerializeField] float timeChange, valueChange;
+
+    [SerializeField] AudioSource actualSourse;
 
     public static SoundsManager instance;
     private void Awake()
@@ -21,27 +23,30 @@ public class SoundsManager : MonoBehaviour
     }
     public void ChangeMusic(string newMusic)
     {
-        AudioSource actualSourse = null;
-        foreach (AudioSource music in musics)    
-            if (music.volume >= 1)
-            {
-                actualSourse = music;
-                break;
-            }
+        StopAllCoroutines();
+        foreach(AudioSource source in musics)
+        {
+            if(source != actualSourse) source.volume = 0;
+            else source.volume = 1;
+        }
         AudioSource newSourse = musics.Find(c => c.name == newMusic);
         if (newSourse == actualSourse) return;
         newSourse.Play();
-        StartCoroutine(ChangeMusicCoroutine(actualSourse, newSourse));
+        StartCoroutine(ChangeMusicCoroutine(newSourse));
     }
 
-     IEnumerator ChangeMusicCoroutine(AudioSource actualSourse, AudioSource newMusic)
+     IEnumerator ChangeMusicCoroutine(AudioSource newMusic)
     {
         
         yield return new WaitForSeconds(timeChange);
         newMusic.volume += valueChange;
         actualSourse.volume = 1 - newMusic.volume;
-        if (newMusic.volume >= 1) actualSourse.Stop();
-        else StartCoroutine(ChangeMusicCoroutine(actualSourse, newMusic));
+        if (newMusic.volume >= 1)
+        {
+            actualSourse.Stop();
+            actualSourse = newMusic;
+        }
+        else StartCoroutine(ChangeMusicCoroutine(newMusic));
      }
     public void PlayShofar()
     {

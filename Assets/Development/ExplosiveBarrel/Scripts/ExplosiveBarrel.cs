@@ -21,7 +21,6 @@ public class ExplosiveBarrel : SpellCarrier, IExplode, IReset
 
     public void Explode(Collider collider)
     {
-        Debug.Log("Explode " + collider + "| my collider " + this.collider);
         StartHitVfx();
         ApplyEffects(targets.GetTargets(collider));
         Debug.Log("termino de explotar");

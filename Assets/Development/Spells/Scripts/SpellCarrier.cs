@@ -49,6 +49,7 @@ namespace Spells
         {
             if (spell.hitVFX)
             {
+                spell.hitVFX.transform.parent = null;
                 spell.hitVFX.gameObject.SetActive(true);
                 spell.hitVFX.time = 0;
                 spell.hitVFX.transform.position = transform.position;

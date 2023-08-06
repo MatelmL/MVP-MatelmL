@@ -35,6 +35,7 @@ namespace Goblin
 
         private void OnDisable()
         {
+            Debug.Log("OnDisable",gameObject);
             onDisable?.Invoke();
             onDisable = null; 
         }
