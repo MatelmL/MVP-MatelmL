@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Waypoint
   - Door
+  - DeadZone
   layers:
   - Default
   - TransparentFX

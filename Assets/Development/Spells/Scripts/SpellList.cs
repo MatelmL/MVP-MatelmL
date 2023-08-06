@@ -32,12 +32,12 @@ namespace Spells
 
         private void LoadSpells()
         {
-            spells = Resources.LoadAll<SOSpell>("Spells");
+            spells = Resources.LoadAll<SOSpell>("");
             // add spells to queue
             foreach (SOSpell spell in spells)
             {
                 spellQueues.Add(spell.name, new Queue<SOSpell.Instance>());
-                foreach (int i in Enumerable.Range(0, SpellQueueSize))
+                foreach (var _ in Enumerable.Range(0, SpellQueueSize))
                 {
                     spellQueues[spell.name].Enqueue(spell.GetInstance(transform));
                 }

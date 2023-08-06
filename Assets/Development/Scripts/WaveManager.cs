@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Goblin;
 using UnityEngine;
 
-public class WaveManager : MonoBehaviour
+public class WaveManager : MonoBehaviour, IReset
 {
-    public static WaveManager Instance;
+    public static WaveManager instance;
 
     public int wave;
 
@@ -13,56 +15,91 @@ public class WaveManager : MonoBehaviour
     public EnemySpawner[] spawners;
 
     public int enemiesInWave;
-
     public int enemiesAlive;
 
     public float timeBetweenWaves = 10f;
-
     public float timeBetweenEnemies = 1f;
+
+    public static Action<int,int> OnWaveClear;
+
+    bool waveFinish = false;
 
     private void Awake()
     {
-        Instance = this;
+        instance = this;
         wave = 1;
         spawners = FindObjectsOfType<EnemySpawner>();
-        StartWave();
+        //StartWave();
+    }
+    private void Start()
+    {
+        UpdateUI();
     }
     public void StartWave()
     {
         //curva de dificultad
         enemiesInWave = 100 / (-wave - 11) + 11;
-
         enemiesAlive = enemiesInWave;
-
         StartCoroutine(Spawn());
-
     }
 
     IEnumerator Spawn()
     {
         for (int i = 0; i < enemiesInWave; i++) {
             yield return new WaitForSeconds(timeBetweenEnemies);
-            spawners[Random.Range(0,spawners.Length)].Spawn();
+            spawners[UnityEngine.Random.Range(0,spawners.Length)].Spawn();
         }
     }
 
     public void WaveClear()
     {
+        StopAllCoroutines();
         wave++;
-        if(wave % restWaves != 0) 
+        if (wave % restWaves != 0)
         {
-            Invoke("StartWave", timeBetweenWaves);
+            Invoke(nameof(StartWave), timeBetweenWaves);
         }
         else
         {
-            //startGobling
+            GameManager.Instance.StartGobling();
         }
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
+        int nextRest = (int)Math.Floor((float)wave / restWaves) + 1;
+        OnWaveClear?.Invoke(wave, restWaves * nextRest);
     }
 
     public void EnemieDie()
     {
         enemiesAlive--;
+
         if(enemiesAlive == 0)
+        {
+            WaveClear();
+        }
+        else
+        StartCoroutine(CheckWaveFinish());
+
+    }
+
+    public void Reset()
+    {
+        wave = 1;
+        UpdateUI();
+        StopAllCoroutines();
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            EnemyPool.Instance.ReturnEnemy(transform.GetChild(i).GetComponent<EnemyController>());
+        }
+    }
+    IEnumerator CheckWaveFinish()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if (EnemyPool.Instance.enemiesList.Find(c => c.gameObject.activeInHierarchy) == null)
         {
             WaveClear();
         }

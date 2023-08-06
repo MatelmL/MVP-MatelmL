@@ -1,31 +1,39 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Door : MonoBehaviour,ITakeDamage,IReset
+[RequireComponent(typeof(ResetOnGameRestart))]
+public class Door : MonoBehaviour,ITakeDamage, IReset
 {
 
-    public static Action OnDoorDie;
+    public static Action OnDoorDieAction;
+    public UnityEvent OnDoorDie;
+    public UnityEvent<float, float> OnDamageTaken;
 
     public float maxHealth;
     public float health { get ; set; }
 
-    private void Start()
+    private void Awake()
     {
-        ResetLife();
+        Reset();
     }
 
-    public void ResetLife()
+    public void Reset()
     {
+        gameObject.SetActive(true);
         health = maxHealth;
     }
 
     public void TakeDamage(float damageAmount)
     {
-        health-= damageAmount;
-        if(health <= 0)
+        health -= damageAmount;
+        OnDamageTaken?.Invoke(health, maxHealth);
+
+        if (health <= 0)
         {
+            OnDoorDieAction?.Invoke();
             OnDoorDie?.Invoke();
             gameObject.SetActive(false);
-        }
+        }  
     }
 }

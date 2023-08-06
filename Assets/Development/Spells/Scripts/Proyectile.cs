@@ -1,24 +1,23 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Spells
 {
+    [RequireComponent(typeof(AudioSource))]
+    [RequireComponent(typeof(ResetOnGameRestart))]
     [RequireComponent(typeof(Rigidbody))]
-    public class Proyectile : MonoBehaviour
+    public class Proyectile : SpellCarrier, IReset
     {
-        Targets targets;
-        Effect[] effects;
-        private SOSpell.Instance spell; // Spell object this projectile belongs to. 
+        public ParticleSystem projectileVFX;
+
         public float lifetime = 5f;
-        public ParticleSystem hitVFX;
-        public ParticleSystem spellVFX;
         private Rigidbody rb;
         private float speed;
-
+        [SerializeField] float distanceToVFX;
         private void Awake()
         {
+            base.Awake();
             rb = GetComponent<Rigidbody>();
         }
 
@@ -28,49 +27,29 @@ namespace Spells
             targets = GetComponent<Targets>();
             effects = GetComponents<Effect>();
             SetSpell(spell);
-            spellVFX.Play();
             gameObject.SetActive(false);
         }
 
         public void OnEnable()
         {
             StartCoroutine(Lifetime());
+            Invoke(nameof(StartProjectileVFX), distanceToVFX / speed);
             rb.velocity = transform.forward * speed;
         }
 
-        public IEnumerator Lifetime()
+        IEnumerator Lifetime()
         {
             yield return new WaitForSeconds(lifetime);
-            if (!hitVFX.isPlaying) ReturnToQueue();
-        }
-        
-        public void SetSpell(SOSpell.Instance spell)
-        {
-            this.spell = spell;
-            targets.spellData = spell.spellData;
-            foreach (var effect in effects)
-            {
-                effect.spellData = spell.spellData;
-            }
-        }
-        private void OnCollisionEnter(Collision other)
-        {
-            Effects(other);
+            ReturnToQueue();
         }
 
-        private void Effects(Collision other)
+        private void OnTriggerEnter(Collider other)
         {
-            Collider[] hits = targets.GetTargets(other);
-            foreach (var hit in hits)
-            {
-                foreach (var effect in effects)
-                {
-                    Debug.Log(effect.GetType());
-                    effect.Apply(hit);
-                }
-            }
-            spellVFX.Stop();
-            StartCoroutine(StartVfx());
+            ApplyEffects(targets.GetTargets(other));
+            projectileVFX.Stop();
+            StartHitVfx();
+            ReturnToQueue();
+            rb.velocity = Vector3.zero;
         }
 
         private void ReturnToQueue()
@@ -79,17 +58,16 @@ namespace Spells
             gameObject.SetActive(false);
         }
         
-        public IEnumerator StartVfx()
+        private void StartProjectileVFX()
         {
-            if (hitVFX)
-            {
-                hitVFX.Play();
-                yield return new WaitForSeconds(hitVFX.main.startLifetime.constant);
-                hitVFX.Stop();
-            } 
-            ReturnToQueue();
+            if (projectileVFX) projectileVFX.Play();
         }
 
+        public void Reset()
+        {
+            RestartHitVfx();
+            ReturnToQueue();
+        }
     }
 }
 

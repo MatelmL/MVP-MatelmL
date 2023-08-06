@@ -16,22 +16,31 @@ namespace Goblin
         private EnemyState state;
 
         private Transform destination;
+
+        private Collider _collider;
         private void Awake()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             state = GetComponent<EnemyState>();
+            _collider = GetComponent<Collider>();
         }
 
         public void Initialize()
         {
             path = Paths.Instance.GetRandomPath();
-            GetComponent<Collider>().enabled = true;
+            _collider.enabled = true;
             NextWaypoint();
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log(other.tag);
             if (state.currentState != GoblinState.Moving) return;
+            if (other.CompareTag("DeadZone"))
+            {
+                Debug.Log("DeadZone");
+                EnemyPool.Instance.ReturnEnemy(GetComponent<EnemyController>());
+            }
             if (GameManager.Instance.lose) return;
             if (other.CompareTag("Waypoint"))
             {
@@ -42,9 +51,16 @@ namespace Goblin
             {
                 OnEnemyAttack.Invoke();
                 navMeshAgent.Stop();
-                gameObject.transform.LookAt(other.transform.position);
+                LookAtDoor();
             }
+
         }
+
+        public void LookAtDoor()
+        {
+            gameObject.transform.LookAt(Paths.Instance.DoorPosition.position);
+        }
+
         void NextWaypoint()
         {
 
@@ -61,8 +77,17 @@ namespace Goblin
 
         void Lose()
         {
+            state.StartMoving();
+            navMeshAgent.Resume();
             navMeshAgent.SetDestination(Paths.Instance.DefeatPosition.position);
         }
-
+        private void OnEnable()
+        {
+            Door.OnDoorDieAction += Lose;
+        }
+        private void OnDisable()
+        {
+            Door.OnDoorDieAction -= Lose;
+        }
     }
 }
