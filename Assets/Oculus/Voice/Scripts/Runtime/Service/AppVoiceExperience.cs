@@ -281,7 +281,7 @@ namespace Oculus.Voice
             }
             else
             {
-                MicPermissionsManager.RequestMicPermission();
+                //MicPermissionsManager.RequestMicPermission();
             }
 
             #if UNITY_ANDROID && !UNITY_EDITOR
