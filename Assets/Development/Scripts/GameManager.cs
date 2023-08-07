@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public bool lose = false;
 
     public static Action OnGameRestart;
-    [SerializeField] StartGobling startGobling;
+    [SerializeField]public StartGobling startGobling;
     private void Awake()
     {
         if (Instance == null)

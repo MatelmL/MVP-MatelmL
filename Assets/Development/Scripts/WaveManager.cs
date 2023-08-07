@@ -22,7 +22,7 @@ public class WaveManager : MonoBehaviour, IReset
 
     public static Action<int,int> OnWaveClear;
 
-    bool waveFinish = false;
+    bool isSpawning = false;
 
     private void Awake()
     {
@@ -45,10 +45,12 @@ public class WaveManager : MonoBehaviour, IReset
 
     IEnumerator Spawn()
     {
+        isSpawning = true;
         for (int i = 0; i < enemiesInWave; i++) {
             yield return new WaitForSeconds(timeBetweenEnemies);
             spawners[UnityEngine.Random.Range(0,spawners.Length)].Spawn();
         }
+        isSpawning = false;
     }
 
     public void WaveClear()
@@ -75,14 +77,11 @@ public class WaveManager : MonoBehaviour, IReset
     public void EnemieDie()
     {
         enemiesAlive--;
-
-        if(enemiesAlive == 0)
+        bool checkWave = !isSpawning && EnemyPool.Instance.enemiesList.Find(c => c.gameObject.activeInHierarchy) == null;
+        if (enemiesAlive == 0 || checkWave)
         {
             WaveClear();
         }
-        else
-        StartCoroutine(CheckWaveFinish());
-
     }
 
     public void Reset()
@@ -97,9 +96,10 @@ public class WaveManager : MonoBehaviour, IReset
     }
     IEnumerator CheckWaveFinish()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(timeBetweenWaves);
 
-        if (EnemyPool.Instance.enemiesList.Find(c => c.gameObject.activeInHierarchy) == null)
+        if (!GameManager.Instance.startGobling.gameObject.activeSelf &&
+            EnemyPool.Instance.enemiesList.Find(c => c.gameObject.activeInHierarchy) == null)
         {
             WaveClear();
         }
