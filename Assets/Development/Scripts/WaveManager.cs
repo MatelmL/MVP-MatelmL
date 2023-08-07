@@ -23,6 +23,7 @@ public class WaveManager : MonoBehaviour, IReset
     public static Action<int,int> OnWaveClear;
 
     bool isSpawning = false;
+    bool waveActive = false;
 
     private void Awake()
     {
@@ -34,9 +35,11 @@ public class WaveManager : MonoBehaviour, IReset
     private void Start()
     {
         UpdateUI();
+        //StartCoroutine(CheckWaveFinish());
     }
     public void StartWave()
     {
+        waveActive = true;
         //curva de dificultad
         enemiesInWave = 100 / (-wave - 11) + 11;
         enemiesAlive = enemiesInWave;
@@ -55,7 +58,7 @@ public class WaveManager : MonoBehaviour, IReset
 
     public void WaveClear()
     {
-        StopAllCoroutines();
+        waveActive = false;
         wave++;
         if (wave % restWaves != 0)
         {
@@ -77,18 +80,22 @@ public class WaveManager : MonoBehaviour, IReset
     public void EnemieDie()
     {
         enemiesAlive--;
-        bool checkWave = !isSpawning && EnemyPool.Instance.enemiesList.Find(c => c.gameObject.activeInHierarchy) == null;
-        if (enemiesAlive == 0 || checkWave)
+        if(GameManager.Instance.lose) return;
+        if (enemiesAlive == 0)
         {
             WaveClear();
+        }
+        else
+        {
+            StartCoroutine(CheckWaveFinish());
         }
     }
 
     public void Reset()
     {
         wave = 1;
+        waveActive = false;
         UpdateUI();
-        StopAllCoroutines();
         for (int i = 0; i < transform.childCount; i++)
         {
             EnemyPool.Instance.ReturnEnemy(transform.GetChild(i).GetComponent<EnemyController>());
@@ -96,12 +103,18 @@ public class WaveManager : MonoBehaviour, IReset
     }
     IEnumerator CheckWaveFinish()
     {
-        yield return new WaitForSeconds(timeBetweenWaves);
-
-        if (!GameManager.Instance.startGobling.gameObject.activeSelf &&
-            EnemyPool.Instance.enemiesList.Find(c => c.gameObject.activeInHierarchy) == null)
+        yield return new WaitForSeconds(5f);
+        bool waveBug = true;
+        if(!waveActive) yield break;
+        if(isSpawning) yield break;
+        for (int i = 0; i < transform.childCount; i++)
         {
-            WaveClear();
+            if (transform.GetChild(i).gameObject.activeSelf)
+            {
+                waveBug = false;
+                break;
+            }
         }
+        if (waveBug) WaveClear();
     }
 }
