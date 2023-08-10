@@ -44,7 +44,7 @@ namespace Spells
         {
             yield return new WaitForSeconds(lifetime);
             if (!impact)
-            Impact(collider);
+                ReturnToQueue();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -60,7 +60,7 @@ namespace Spells
             projectileVFX.Stop();
             StartHitVfx();
             rb.velocity = Vector3.zero;
-            Invoke(nameof(ReturnToQueue), projectileVFX.startLifetime);
+            ReturnToQueue();
         }
 
         private void ReturnToQueue()
