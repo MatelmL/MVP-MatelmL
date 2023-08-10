@@ -48,7 +48,7 @@ namespace Spells
             ApplyEffects(targets.GetTargets(other));
             projectileVFX.Stop();
             StartHitVfx();
-            ReturnToQueue();
+            Invoke(nameof(ReturnToQueue), projectileVFX.startLifetime);
             rb.velocity = Vector3.zero;
         }
 
