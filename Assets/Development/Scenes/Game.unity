@@ -48573,7 +48573,7 @@ PrefabInstance:
     - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
         type: 3}
       propertyPath: OnStartGoblingTween.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: SuckDie
+      value: SuckDie*
       objectReference: {fileID: 0}
     - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
         type: 3}

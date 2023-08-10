@@ -15,6 +15,7 @@ namespace Spells
         private Rigidbody rb;
         private float speed;
         [SerializeField] float distanceToVFX;
+        public UnityEvent OnTrigger;
         private void Awake()
         {
             base.Awake();
@@ -45,6 +46,7 @@ namespace Spells
 
         private void OnTriggerEnter(Collider other)
         {
+            OnTrigger?.Invoke();
             ApplyEffects(targets.GetTargets(other));
             projectileVFX.Stop();
             StartHitVfx();
