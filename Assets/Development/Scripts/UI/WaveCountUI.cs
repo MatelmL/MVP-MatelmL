@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class WaveCountUI : MonoBehaviour,IReset
+public class WaveCountUI : MonoBehaviour
 {
     public TextMeshProUGUI waveCountText;
 

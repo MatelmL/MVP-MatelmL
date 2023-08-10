@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 1201775586521437386}
   - component: {fileID: 3153810647522969115}
   - component: {fileID: -7476967838444423707}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FireBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,6 +325,10 @@ PrefabInstance:
       value: FX_Fire
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -473,6 +477,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FX_Explosion_Rubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446491015658393810, guid: c404488a291011246a3410223d52e8e6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446491015658397310, guid: c404488a291011246a3410223d52e8e6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446491015658582878, guid: c404488a291011246a3410223d52e8e6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8446491015658609020, guid: c404488a291011246a3410223d52e8e6,
         type: 3}
