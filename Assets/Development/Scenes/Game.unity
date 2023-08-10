@@ -10913,6 +10913,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 554359116}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &554538457 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4527598608959989898, guid: 2f7e6f7e3e7f3214982f67777b686586,
+    type: 3}
+  m_PrefabInstance: {fileID: 4527598608959989896}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb822cdf500ccc42a3a90f68e93b2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &563492205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48011,6 +48023,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2974217621887722519, guid: 6c7830cd1a81cc14a8bc1c4a58e5950f,
+        type: 3}
+      propertyPath: clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: d13c56006d181194ba9b58b5c49c228c, type: 3}
     - target: {fileID: 3993019109748432714, guid: 6c7830cd1a81cc14a8bc1c4a58e5950f,
         type: 3}
       propertyPath: m_RootOrder
@@ -48470,6 +48487,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
         type: 3}
+      propertyPath: OnStartGoblingTween.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
+        type: 3}
       propertyPath: OnStartGoblingEnable.m_PersistentCalls.m_Calls.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -48485,9 +48507,19 @@ PrefabInstance:
       objectReference: {fileID: 483802609}
     - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
         type: 3}
+      propertyPath: OnStartGoblingTween.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
+        type: 3}
       propertyPath: OnStartGoblingEnable.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
+        type: 3}
+      propertyPath: OnStartGoblingTween.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 554538457}
     - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
         type: 3}
       propertyPath: OnStartGoblingEnable.m_PersistentCalls.m_Calls.Array.data[3].m_Target
@@ -48500,13 +48532,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
         type: 3}
+      propertyPath: OnStartGoblingTween.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
+        type: 3}
       propertyPath: OnStartGoblingEnable.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
         type: 3}
+      propertyPath: OnStartGoblingTween.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayClip
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
+        type: 3}
       propertyPath: OnStartGoblingEnable.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
       value: ChangeMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
+        type: 3}
+      propertyPath: OnStartGoblingTween.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: AudioSourceController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
         type: 3}
@@ -48525,14 +48572,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
         type: 3}
+      propertyPath: OnStartGoblingTween.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: SuckDie
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
+        type: 3}
       propertyPath: OnStartGoblingEnable.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_StringArgument
       value: Source Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
+        type: 3}
+      propertyPath: OnStartGoblingTween.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3227618439157819585, guid: 2f7e6f7e3e7f3214982f67777b686586,
         type: 3}
       propertyPath: OnStartGoblingEnable.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4527598608959989898, guid: 2f7e6f7e3e7f3214982f67777b686586,
+        type: 3}
+      propertyPath: clips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527598608959989898, guid: 2f7e6f7e3e7f3214982f67777b686586,
+        type: 3}
+      propertyPath: clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: d070b168909798f45a57d2d6290193af, type: 3}
     - target: {fileID: 7336241552958242672, guid: 2f7e6f7e3e7f3214982f67777b686586,
         type: 3}
       propertyPath: m_RootOrder
