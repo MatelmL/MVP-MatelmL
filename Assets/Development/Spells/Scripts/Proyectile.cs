@@ -16,6 +16,7 @@ namespace Spells
         private float speed;
         [SerializeField] float distanceToVFX;
         public UnityEvent OnTrigger;
+        bool impact = false;
         private void Awake()
         {
             base.Awake();
@@ -33,6 +34,7 @@ namespace Spells
 
         public void OnEnable()
         {
+            impact = false;
             StartCoroutine(Lifetime());
             Invoke(nameof(StartProjectileVFX), distanceToVFX / speed);
             rb.velocity = transform.forward * speed;
@@ -41,17 +43,24 @@ namespace Spells
         IEnumerator Lifetime()
         {
             yield return new WaitForSeconds(lifetime);
-            ReturnToQueue();
+            if (!impact)
+            Impact(collider);
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            Impact(other);
+        }
+
+        private void Impact(Collider other)
+        {
+            impact = true;
             OnTrigger?.Invoke();
             ApplyEffects(targets.GetTargets(other));
             projectileVFX.Stop();
             StartHitVfx();
-            Invoke(nameof(ReturnToQueue), projectileVFX.startLifetime);
             rb.velocity = Vector3.zero;
+            Invoke(nameof(ReturnToQueue), projectileVFX.startLifetime);
         }
 
         private void ReturnToQueue()
